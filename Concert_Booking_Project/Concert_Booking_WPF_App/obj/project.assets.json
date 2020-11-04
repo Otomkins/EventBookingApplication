@@ -1,0 +1,68 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": []
+  },
+  "packageFolders": {
+    "C:\\Users\\otomk\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Career\\Sparta Global\\Academy\\Week 6 - Project Week\\Oliver Tomkins - WPF EF C# Project\\Concert_Booking_Project\\Concert_Booking_WPF_App\\Concert_Booking_WPF_App.csproj",
+      "projectName": "Concert_Booking_WPF_App",
+      "projectPath": "C:\\Career\\Sparta Global\\Academy\\Week 6 - Project Week\\Oliver Tomkins - WPF EF C# Project\\Concert_Booking_Project\\Concert_Booking_WPF_App\\Concert_Booking_WPF_App.csproj",
+      "packagesPath": "C:\\Users\\otomk\\.nuget\\packages\\",
+      "outputPath": "C:\\Career\\Sparta Global\\Academy\\Week 6 - Project Week\\Oliver Tomkins - WPF EF C# Project\\Concert_Booking_Project\\Concert_Booking_WPF_App\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\otomk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WPF": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
