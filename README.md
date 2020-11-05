@@ -2,8 +2,6 @@
 
 **By Oliver Tomkins**
 
-**Table of contents:**
-
 [TOC]
 
 #### `PROJECT GOAL`
@@ -27,6 +25,8 @@
 
 ### `SPRINT 1`
 
+*See 'Sprint 1 - ProjectBoard Start.png'  in 'Otomkins/EventBookingApplication'.*
+
 **Sprint Goal:**
 
 Create basic WPF app with unit tests allowing a user to use CRUD functionality with event database.
@@ -41,11 +41,6 @@ Create basic WPF app with unit tests allowing a user to use CRUD functionality w
 
 - [ ] Implement CRUD functionality inside app.
 
-  
-
-#### `Project Board`
-
-<img src="C:\Users\otomk\AppData\Roaming\Typora\typora-user-images\image-20201104145619962.png" alt="image-20201104145619962" style="zoom: 67%;" />
 
 <b>USER EPIC</b>
 
@@ -82,30 +77,101 @@ As an organiser, I need to be able to update events so that they are correct.
 - [ ] User can update data in the DB.
 - [ ] Changes are reflected and displayed.
 
-
-
-#### `ERD Diagram`
-
-<img src="C:\Users\otomk\AppData\Roaming\Typora\typora-user-images\image-20201104194736197.png" alt="image-20201104194736197" style="zoom:50%;" />
-
-
-
 #### `Database Creation`
 
-<img src="C:\Users\otomk\AppData\Roaming\Typora\typora-user-images\image-20201104194933861.png" alt="image-20201104194933861" style="zoom: 40%;" /><img src="C:\Users\otomk\AppData\Roaming\Typora\typora-user-images\image-20201104195821956.png" alt="image-20201104195821956" style="zoom: 53%;" />
+*See 'Event Booking ERD.png' and 'Event Booking Class Diagram.png' in 'Otomkins/EventBookingApplication'.*
 
+```c#
+public class BookingContext : DbContext
+{
+    public DbSet<Venue> Venues { get; set; }
+    public DbSet<Event> Events { get; set; }
+    public DbSet<Ticket> Tickets { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+        => options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Event_Booking;");
+}
+public class Venue
+{
+    public int VenueId { get; set; }
+    public string Name { get; set; }
+    public string City { get; set; }
+    public string Email { get; set; }
+    public string Phone { get; set; }
+    public List<Event> Events { get; set; } = new List<Event>();
+}
+public class Event
+{
+    public int EventId { get; set; }
+    public Venue Venue { get; set; }
+    public string Event_Name { get; set; }
+    public string Main_Act { get; set; }
+    public string Supporting_Act { get; set; }
+    public string Genre { get; set; }
+    public string Description { get; set; }
+    public DateTime Date { get; set; }
+    public string Start_Time { get; set; }
+    public string End_Time { get; set; }
+    public int Capacity { get; set; }
+
+    public List<Ticket> Tickets { get; set; } = new List<Ticket>();
+}
+public class Ticket
+{
+    public int TicketId { get; set; }
+    public Event Event { get; set; }
+    public string First_Name { get; set; }
+    public string Last_Name { get; set; }
+    public string Email { get; set; }
+    public string Phone { get; set; }
+}
+```
 <b>SPRINT GOAL:</b>
 Create basic WPF app that allows the user to use CRUD functionality with event DB. Unit Tests made to test this layer functionality.
 
 - [x] Create new DBContext. Migrate this to DB.
 
-
-
-
 #### `User Story: Read Functionality`
 
-<img src="C:\Users\otomk\AppData\Roaming\Typora\typora-user-images\image-20201105095640550.png" alt="image-20201105095640550" style="zoom:50%;" />
+```c#
+    // Display relevant data based on what is selected
+    public Venue SelectedVenue { get; set; }
+    public Event SelectedEvent { get; set; }
+    public Ticket SelectedTicket { get; set; }
 
+    // Read functionality
+    public List<Venue> RetrieveAllVenues()
+    {
+        using var bc = new BookingContext();
+        return bc.Venues.ToList();
+    }
+    public void SetSelectedVenue(object selectedVenue)
+    {
+        SelectedVenue = (Venue)selectedVenue;
+    }
+
+    public List<Event> RetrieveAllEvents()
+    {
+        using var bc = new BookingContext();
+        var q = bc.Events.Where(v => v.Venue.VenueId == SelectedVenue.VenueId);
+        return q.ToList();
+    }
+    public void SetSelectedEvent(object selectedEvent)
+    {
+        SelectedEvent = (Event)selectedEvent;
+    }
+
+    public List<Ticket> RetrieveAllTickets()
+    {
+        using var bc = new BookingContext();
+        var q = bc.Tickets.Where(e => e.Event.EventId == SelectedEvent.EventId);
+        return q.ToList();
+    }
+    public void SetSelectedTickets(object selectedTicket)
+    {
+        SelectedTicket = (Ticket)selectedTicket;
+    }
+```
 <b>1. Read Functionality:</b>
 As an organiser, I need to be able to display all current info so that consumers can see them.
 <b>Acceptance Criteria:</b>
@@ -121,4 +187,38 @@ As an organiser, I need to be able to add events so that consumers can see what'
 - [x] User can add data to the DB.
 - [ ] Data is returned and displayed.
 
-<img src="C:\Users\otomk\AppData\Roaming\Typora\typora-user-images\image-20201105102005536.png" alt="image-20201105102005536" style="zoom:50%;" />
+```c#
+    // Add functionality
+    public void AddVenue(string name, string city, string email, string phone)
+    {
+        using var bc = new BookingContext();
+        var newVenue = new Venue { Name = name, City = city, Email = email, Phone = phone };
+        bc.Venues.Add(newVenue);
+        bc.SaveChanges();
+    }
+
+    public void AddEvent(string eventName, string mainAct, string genre, string description, DateTime date,
+        string startTime, string endTime, int capacity, string supportingAct = "N/A")
+    {
+        using var bc = new BookingContext();
+        var q = bc.Venues.Where(e => e.VenueId == SelectedVenue.VenueId);
+        foreach (var item in q)
+        {
+            var newEvent = new Event
+            {
+                Venue = item,
+                Event_Name = eventName,
+                Main_Act = mainAct,
+                Supporting_Act = supportingAct,
+                Genre = genre,
+                Description = description,
+                Date = date,
+                Start_Time = startTime,
+                End_Time = endTime,
+                Capacity = capacity
+            };
+            bc.Events.Add(newEvent);
+        }
+        bc.SaveChanges();
+    }
+```
