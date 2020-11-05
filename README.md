@@ -281,3 +281,50 @@ As an organiser, I need to be able to delete events so that only correct informa
         bc.SaveChanges();
     }
 ```
+#### `User Story: Update Functionality`
+
+<b>4. Update Functionality:</b>
+As an organiser, I need to be able to update events so that they are correct.
+<b>Acceptance Criteria:</b>
+
+- [x] User can update data in the DB.
+- [ ] Changes are reflected and displayed.
+
+```c#
+    // Update functionality
+    public void UpdateVenueData(string name, string city, string email, string phone)
+    {
+        using var bc = new BookingContext();
+        SelectedVenue.Name = name;
+        SelectedVenue.City = city;
+        SelectedVenue.Email = email;
+        SelectedVenue.Phone = phone;
+        bc.SaveChanges();
+    }
+
+    public void UpdateEventData(string eventName, string mainAct, string supportingAct, string genre, string description, DateTime date,
+        string startTime, string endTime, int capacity)
+    {
+        using var bc = new BookingContext();
+        SelectedEvent.Event_Name = eventName;
+        SelectedEvent.Main_Act = mainAct;
+        SelectedEvent.Supporting_Act = supportingAct;
+        SelectedEvent.Genre = genre;
+        SelectedEvent.Description = description;
+        SelectedEvent.Date = date;
+        SelectedEvent.Start_Time = startTime;
+        SelectedEvent.End_Time = endTime;
+        SelectedEvent.Capacity = capacity;
+        bc.SaveChanges();
+    }
+
+    public void UpdateTicketData(string firstName, string lastName, string email, string phone)
+    {
+        using var bc = new BookingContext();
+        SelectedTicket.First_Name = firstName;
+        SelectedTicket.Last_Name = lastName;
+        SelectedTicket.Email = email;
+        SelectedTicket.Phone = phone;
+        bc.SaveChanges();
+    }
+```
