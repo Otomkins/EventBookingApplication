@@ -84,48 +84,57 @@ namespace Concert_Booking_Project
         public void RemoveVenue() // Removes related Event and Ticket data
         {
             using var bc = new BookingContext();
-            var q = bc.Venues.Where(v => v.VenueId == SelectedVenue.VenueId);
-            RemoveQueryFromDB(q);
-            var q2 = bc.Events.Where(e => e.Venue.VenueId == SelectedVenue.VenueId);
-            RemoveQueryFromDB(q2);
             var q3 = bc.Tickets.Where(t => t.Event.Venue.VenueId == SelectedVenue.VenueId);
-            RemoveQueryFromDB(q3);
+            foreach (var item in q3)
+                bc.Remove(item);
+            bc.SaveChanges();
+
+            var q2 = bc.Events.Where(e => e.Venue.VenueId == SelectedVenue.VenueId);
+            foreach (var item in q2)
+                bc.Remove(item);
+            bc.SaveChanges();
+
+            var q = bc.Venues.Where(v => v.VenueId == SelectedVenue.VenueId);
+            foreach (var item in q)
+                bc.Remove(item);
+            bc.SaveChanges();
         }
 
         public void RemoveEvent() // Removes related Ticket data
         {
             using var bc = new BookingContext();
-            var q = bc.Events.Where(e => e.EventId == SelectedEvent.EventId);
-            RemoveQueryFromDB(q);
             var q2 = bc.Tickets.Where(t => t.Event.EventId == SelectedEvent.EventId);
-            RemoveQueryFromDB(q2);
+            foreach (var item in q2)
+                bc.Remove(item);
+            bc.SaveChanges();
+
+            var q = bc.Events.Where(e => e.EventId == SelectedEvent.EventId);
+            foreach (var item in q)
+                bc.Remove(item);
+            bc.SaveChanges();
         }
 
         public void RemoveTicket()
         {
             using var bc = new BookingContext();
             var q = bc.Tickets.Where(t => t.TicketId == SelectedTicket.TicketId);
-            RemoveQueryFromDB(q);
+            foreach (var item in q)
+                bc.Remove(item);
+            bc.SaveChanges();
         }
 
         // Added functionality to specify date where data is removed up to
         public void RemoveOutOfDateEventsAndTickets(DateTime deleteUpTo)
         {
             using var bc = new BookingContext();
-            var q = bc.Events.Where(e => e.Date < deleteUpTo);
-            RemoveQueryFromDB(q);
             var q2 = bc.Tickets.Where(t => t.Event.Date < deleteUpTo);
-            RemoveQueryFromDB(q2);
-        }
-
-        // Compact method to remove a specified query from DB
-        private void RemoveQueryFromDB(IQueryable q)
-        {
-            using var bc = new BookingContext();
-            foreach (var item in q)
-            {
+            foreach (var item in q2)
                 bc.Remove(item);
-            }
+            bc.SaveChanges();
+
+            var q = bc.Events.Where(e => e.Date < deleteUpTo);
+            foreach (var item in q)
+                bc.Remove(item);
             bc.SaveChanges();
         }
 
