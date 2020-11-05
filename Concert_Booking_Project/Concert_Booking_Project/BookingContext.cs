@@ -30,7 +30,7 @@ namespace Concert_Booking_Project
         public string Main_Act { get; set; }
         public string Supporting_Act { get; set; }
         public string Genre { get; set; }
-        public string? Description { get; set; }
+        public string Description { get; set; }
         public DateTime Date { get; set; }
         public string Start_Time { get; set; }
         public string End_Time { get; set; }

@@ -104,7 +104,7 @@ Create basic WPF app that allows the user to use CRUD functionality with event D
 
 #### `User Story: Read Functionality`
 
-<img src="C:\Users\otomk\AppData\Roaming\Typora\typora-user-images\image-20201104202435448.png" alt="image-20201104202435448" style="zoom:50%;" />
+<img src="C:\Users\otomk\AppData\Roaming\Typora\typora-user-images\image-20201105095640550.png" alt="image-20201105095640550" style="zoom:50%;" />
 
 <b>1. Read Functionality:</b>
 As an organiser, I need to be able to display all current info so that consumers can see them.
@@ -112,3 +112,13 @@ As an organiser, I need to be able to display all current info so that consumers
 
 - [x] Relevant data is retrieved based on the selected object.
 
+#### `User Story: Add Functionality`
+
+<b>2. Add Functionality:</b>
+As an organiser, I need to be able to add events so that consumers can see what's new.
+<b>Acceptance Criteria:</b>
+
+- [x] User can add data to the DB.
+- [ ] Data is returned and displayed.
+
+<img src="C:\Users\otomk\AppData\Roaming\Typora\typora-user-images\image-20201105102005536.png" alt="image-20201105102005536" style="zoom:50%;" />
