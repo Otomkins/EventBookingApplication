@@ -5,8 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Concert_Booking_WPF_App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1500" ResizeMode="NoResize">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="189*"/>
+            <ColumnDefinition Width="267*"/>
+            <ColumnDefinition Width="151*"/>
+            <ColumnDefinition Width="143*"/>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Center" Height="66" VerticalAlignment="Top" Width="378" Grid.Column="1">
+            <TextBox HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" Text="LOGO" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
+        </Grid>
+        <Calendar Grid.Column="3" HorizontalAlignment="Center" Height="184" Margin="0,10,0,0" VerticalAlignment="Top" Width="196"/>
+
+
+        <!-- List Box Label Headers -->
+        <Label x:Name="VenueListLabel" Content="Venue List" HorizontalAlignment="Center" Height="33" Margin="0,66,0,0" VerticalAlignment="Top" Width="378" Grid.Column="1"/>
+        <Label x:Name="EventsListLabel" Content="Events List" Grid.Column="2" HorizontalAlignment="Center" Height="31" Margin="0,1,0,0" VerticalAlignment="Top" Width="534"/>
+
+        <!-- List Box Displays -->
+        <ListBox x:Name="VenueListBox" HorizontalAlignment="Center" Height="229" Margin="0,104,0,0" VerticalAlignment="Top" Width="384" Grid.Column="1" SelectionChanged="VenueListBox_SelectionChanged"/>
+        <ListBox x:Name="EventListBox" Grid.Column="2" HorizontalAlignment="Center" Height="361" VerticalAlignment="Top" Width="534" Margin="0,37,0,0"/>
+
+        <!-- Venue Interact -->
+        <!-- View, Update & Delete -->
+        <Label x:Name="VenueInteractLabelA" Content="View/Update/Delete Venue Data" HorizontalAlignment="Left" Height="33" Margin="25,338,0,0" VerticalAlignment="Top" Width="214" Grid.Column="1"/>
+
+        <Label x:Name="VenueNameLabelA" Content="Venue Name" HorizontalAlignment="Left" Height="30" Margin="25,375,0,0" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+        <TextBox x:Name="VenueNameTextBoxA" HorizontalAlignment="Left" Height="25" Margin="25,405,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+
+        <Label x:Name="VenueCityLabelA" Content="Venue City" HorizontalAlignment="Left" Height="30" Margin="204,375,0,0" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+        <TextBox x:Name="VenueCityTextBoxA" HorizontalAlignment="Left" Height="25" Margin="205,405,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Grid.Column="1"/>
+
+        <Label x:Name="VenueEmailLabelA" Content="Venue Email" HorizontalAlignment="Left" Height="30" Margin="25,435,0,0" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+        <TextBox x:Name="VenueEmailTextBoxA" HorizontalAlignment="Left" Height="25" Margin="25,465,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+
+        <Label x:Name="VenuePhoneLabelA" Content="Venue Phone No." HorizontalAlignment="Left" Height="30" Margin="203,435,0,0" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+        <TextBox x:Name="VenuePhoneTextBoxA" HorizontalAlignment="Left" Height="25" Margin="203,465,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+
+        <Button x:Name="VenueUpdateButton" Content="Update" HorizontalAlignment="Left" Height="25" Margin="25,508,0,0" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+        <Button x:Name="VenueDeleteButton" Content="Delete" HorizontalAlignment="Left" Height="25" Margin="203,508,0,0" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+
+        <!-- Add -->
+        <Label x:Name="VenueInteractLabelB" Content="Add New Venue Data" HorizontalAlignment="Left" Height="33" Margin="25,551,0,0" VerticalAlignment="Top" Width="214" Grid.Column="1"/>
+
+        <Label x:Name="VenueNameLabelB" Content="Venue Name" HorizontalAlignment="Left" Height="30" Margin="25,588,0,0" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+        <TextBox x:Name="VenueNameTextBoxB" HorizontalAlignment="Left" Height="25" Margin="25,618,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+
+        <Label x:Name="VenueCityLabelB" Content="Venue City" HorizontalAlignment="Left" Height="30" Margin="204,588,0,0" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+        <TextBox x:Name="VenueCityTextBoxB" HorizontalAlignment="Left" Height="25" Margin="205,618,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Grid.Column="1"/>
+
+        <Label x:Name="VenueEmailLabelB" Content="Venue Email" HorizontalAlignment="Left" Height="30" Margin="25,648,0,0" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+        <TextBox x:Name="VenueEmailTextBoxB" HorizontalAlignment="Left" Height="25" Margin="25,678,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+
+        <Label x:Name="VenuePhoneLabelB" Content="Venue Phone No." HorizontalAlignment="Left" Height="30" Margin="203,648,0,0" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+        <TextBox x:Name="VenuePhoneTextBoxB" HorizontalAlignment="Left" Height="25" Margin="203,678,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Grid.Column="1"/>
+
+        <Button x:Name="VenueAddButton" Content="Add" HorizontalAlignment="Center" Height="25" Margin="0,719,0,0" VerticalAlignment="Top" Width="148" Grid.Column="1" Click="VenueAddButton_Click"/>
+
+
 
     </Grid>
 </Window>

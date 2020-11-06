@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Concert_Booking_Project\Concert_Booking_Project.csproj" />
+  </ItemGroup>
+
 </Project>
