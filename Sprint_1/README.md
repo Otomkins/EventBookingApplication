@@ -25,7 +25,7 @@
 
 ### SPRINT 1
 
-> *See 'Sprint 1 Start - ProjectBoard.png'  in 'Otomkins/EventBookingApplication'.*
+> *See 'Sprint 1 Start - ProjectBoard.png'  in 'Otomkins/EventBookingApplication/Sprint_1'.*
 
 **SPRINT GOAL:**
 
@@ -41,8 +41,7 @@ Create basic WPF app with unit tests allowing a user to use CRUD functionality w
 
 - [ ] Implement CRUD functionality inside app.
 
-
-<b>USER EPIC</b>
+<b>USER EPIC 1:</b>
 
 > As an organiser, I need an app to present my concert data so that I can populate and manage these for consumer use.
 
