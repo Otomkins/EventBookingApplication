@@ -40,10 +40,10 @@ namespace Concert_Booking_Project
         public List<Ticket> RetrieveAllTickets()
         {
             using var bc = new BookingContext();
-            var q = bc.Tickets.Where(e => e.Event.EventId == SelectedEvent.EventId);
+            var q = bc.Tickets.Where(e => e.Event.Venue.VenueId == SelectedVenue.VenueId);
             return q.ToList();
         }
-        public void SetSelectedTickets(object selectedTicket)
+        public void SetSelectedTicket(object selectedTicket)
         {
             SelectedTicket = (Ticket)selectedTicket;
         }
@@ -194,6 +194,29 @@ namespace Concert_Booking_Project
             SelectedTicket.Last_Name = lastName;
             SelectedTicket.Email = email;
             SelectedTicket.Phone = phone;
+            bc.SaveChanges();
+        }
+
+
+
+
+        public void AddTicket(string firstName, string lastName, string email, string phone)
+        {
+            using var bc = new BookingContext();
+            var q = bc.Events.Where(e => e.EventId == SelectedEvent.EventId);
+            foreach (var item in q)
+            {
+                var newTicket = new Ticket
+                {
+                    Event = item,
+                    First_Name = firstName,
+                    Last_Name = lastName,
+                    Email = email,
+                    Phone = phone
+                   
+                };
+                bc.Tickets.Add(newTicket);
+            }
             bc.SaveChanges();
         }
     }

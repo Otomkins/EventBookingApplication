@@ -9,23 +9,28 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="189*"/>
-            <ColumnDefinition Width="279*"/>
-            <ColumnDefinition Width="139*"/>
-            <ColumnDefinition Width="143*"/>
+            <ColumnDefinition Width="378*"/>
+            <ColumnDefinition Width="558*"/>
+            <ColumnDefinition Width="209*"/>
+            <ColumnDefinition Width="355*"/>
         </Grid.ColumnDefinitions>
         <Grid HorizontalAlignment="Center" Height="66" VerticalAlignment="Top" Width="378" Grid.Column="1">
-            <TextBox HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" Text="LOGO" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
+            <TextBox HorizontalAlignment="Center" Height="46" Text="Event Booking Application" TextWrapping="Wrap" VerticalAlignment="Center" Width="358" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" BorderThickness="2,2,2,2"/>
         </Grid>
 
 
         <!-- List Box Label Headers -->
-        <Label x:Name="VenueListLabel" Content="Venue List" HorizontalAlignment="Center" Height="33" Margin="0,66,0,0" VerticalAlignment="Top" Width="378" Grid.Column="1"/>
-        <Label x:Name="EventsListLabel" Content="Events List" Grid.Column="2" HorizontalAlignment="Center" Height="31" Margin="0,1,0,0" VerticalAlignment="Top" Width="534"/>
+        <Label x:Name="VenueListLabel" Content="Venue List" HorizontalAlignment="Center" Height="33" Margin="0,66,0,0" VerticalAlignment="Top" Width="378" Grid.Column="1" Background="#FF595959" Foreground="White" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Normal"/>
+        <Label x:Name="EventsListLabel" Content="Events List" Grid.Column="2" HorizontalAlignment="Center" Height="33" Margin="0,1,0,0" VerticalAlignment="Top" Width="558" Background="#FF595959" Foreground="White" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Normal"/>
+
+        <Label x:Name="TicketsListLabel" Content="Tickets List" Grid.Column="4" HorizontalAlignment="Center" Height="33" Margin="0,1,0,0" VerticalAlignment="Top" Width="286" Background="#FF595959" Foreground="White" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Normal"/>
+
 
         <!-- List Box Displays -->
-        <ListBox x:Name="VenueListBox" HorizontalAlignment="Center" Height="211" Margin="0,104,0,0" VerticalAlignment="Top" Width="378" Grid.Column="1" SelectionChanged="VenueListBox_SelectionChanged"/>
-        <ListBox x:Name="EventListBox" Grid.Column="2" HorizontalAlignment="Center" Height="154" VerticalAlignment="Top" Width="558" Margin="0,37,0,0" SelectionChanged="EventListBox_SelectionChanged"/>
+        <ListBox x:Name="VenueListBox" HorizontalAlignment="Center" Height="211" Margin="0,104,0,0" VerticalAlignment="Top" Width="358" Grid.Column="1" SelectionChanged="VenueListBox_SelectionChanged" BorderThickness="10,2,2,2" BorderBrush="#FFB4B4B4"/>
+        <ListBox x:Name="EventListBox" Grid.Column="2" HorizontalAlignment="Center" Height="154" VerticalAlignment="Top" Width="538" Margin="0,37,0,0" SelectionChanged="EventListBox_SelectionChanged" BorderBrush="#FFB4B4B4" BorderThickness="10,2,2,2"/>
+        <ListBox x:Name="TicketListBox" Grid.Column="4" HorizontalAlignment="Center" Height="492" Margin="0,39,0,0" VerticalAlignment="Top" Width="336" BorderThickness="10,2,2,2" BorderBrush="#FFB4B4B4" SelectionChanged="TicketListBox_SelectionChanged"/>
+
 
         <!-- Venue Interact -->
         <!-- View, Update & Delete -->
@@ -46,7 +51,7 @@
         <Button x:Name="VenueUpdateButton" Content="Update" HorizontalAlignment="Left" Height="25" Margin="25,468,0,0" VerticalAlignment="Top" Width="149" Grid.Column="1" Click="VenueUpdateButton_Click"/>
         <Button x:Name="VenueRemoveButton" Content="Remove" HorizontalAlignment="Left" Height="25" Margin="203,468,0,0" VerticalAlignment="Top" Width="149" Grid.Column="1" Click="VenueRemoveButton_Click"/>
 
-        <TextBox x:Name="VenueErrorTextboxA" HorizontalAlignment="Center" Height="25" Margin="0,506,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.Column="1" IsReadOnly="True"/>
+        <TextBox x:Name="VenueErrorTextboxA" HorizontalAlignment="Center" Height="25" Margin="0,506,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.Column="1" IsReadOnly="True" Background="#FF343434" Foreground="White" VerticalContentAlignment="Center"/>
 
         <!-- Add -->
         <Label x:Name="VenueInteractLabelB" Content="Add New Venue Data" HorizontalAlignment="Left" Height="30" Margin="25,539,0,0" VerticalAlignment="Top" Width="214" Grid.Column="1" VerticalContentAlignment="Center" FontSize="14"/>
@@ -66,7 +71,7 @@
         <Button x:Name="VenueAddButton" Content="Add" HorizontalAlignment="Left" Height="25" Margin="25,682,0,0" VerticalAlignment="Top" Width="148" Grid.Column="1" Click="VenueAddButton_Click"/>
         <Button x:Name="VenueClearButton" Content="Clear" HorizontalAlignment="Left" Height="25" Margin="205,682,0,0" VerticalAlignment="Top" Width="148" Grid.Column="1" Click="VenueClearButton_Click"/>
 
-        <TextBox x:Name="VenueErrorTextboxB" HorizontalAlignment="Center" Height="25" Margin="0,719,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.Column="1" IsReadOnly="True"/>
+        <TextBox x:Name="VenueErrorTextboxB" HorizontalAlignment="Center" Height="25" Margin="0,719,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.Column="1" IsReadOnly="True" Background="#FF343434" Foreground="White" VerticalContentAlignment="Center"/>
 
         <!-- Event Interact -->
         <!-- View, Update & Delete -->
@@ -96,7 +101,7 @@
 
         <Button x:Name="EventUpdateButton" Content="Update" HorizontalAlignment="Left" Height="25" Margin="18,441,0,0" VerticalAlignment="Top" Width="148" Grid.Column="2" Click="EventUpdateButton_Click"/>
         <Button x:Name="EventRemoveButton" Content="Remove" HorizontalAlignment="Left" Height="25" Margin="180,441,0,0" VerticalAlignment="Top" Width="148" Grid.Column="2" Click="EventRemoveButton_Click"/>
-        <TextBox x:Name="EventErrorTextboxA" HorizontalAlignment="Left" Height="25" Margin="344,441,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Grid.Column="2" IsReadOnly="True"/>
+        <TextBox x:Name="EventErrorTextboxA" HorizontalAlignment="Left" Height="25" Margin="344,441,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Grid.Column="2" IsReadOnly="True" Background="#FF343434" Foreground="White" VerticalContentAlignment="Center"/>
 
         <!-- Add -->
         <Label x:Name="EventInteractLabelB" Content="View/Update/Delete Event Data" HorizontalAlignment="Left" Height="30" Margin="14,488,0,0" VerticalAlignment="Top" Width="214" Grid.Column="2" FontSize="14"/>
@@ -124,8 +129,27 @@
 
         <Button x:Name="EventAddButton" Content="Add" HorizontalAlignment="Left" Height="24" Margin="18,720,0,0" VerticalAlignment="Top" Width="148" Grid.Column="2" Click="EventAddButton_Click"/>
         <Button x:Name="EventClearButton" Content="Clear" HorizontalAlignment="Left" Height="24" Margin="180,720,0,0" VerticalAlignment="Top" Width="148" Grid.Column="2" Click="EventClearButton_Click"/>
-        <TextBox x:Name="EventErrorTextboxB" HorizontalAlignment="Left" Height="26" Margin="344,719,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Grid.Column="2" IsReadOnly="True"/>
+        <TextBox x:Name="EventErrorTextboxB" HorizontalAlignment="Left" Height="26" Margin="344,719,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Grid.Column="2" IsReadOnly="True" Background="#FF343434" Foreground="White" VerticalContentAlignment="Center"/>
 
+        <!-- Ticket Interact -->
+        <!-- View, Update & Delete -->
+        <Label x:Name="TicketInteractLabel" Content="View/Update/Delete Ticket Data" HorizontalAlignment="Left" Height="30" Margin="13,539,0,0" VerticalAlignment="Top" Width="214" Grid.Column="4" VerticalContentAlignment="Center" FontSize="14"/>
+       
+        <Label x:Name="TicketFirstNameLabel" Content="Customer First Name" HorizontalAlignment="Left" Height="26" Margin="13,571,0,0" VerticalAlignment="Top" Width="148" Grid.Column="4" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TicketFirstNameTextBox" HorizontalAlignment="Left" Height="24" Margin="13,597,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Grid.Column="4" VerticalContentAlignment="Center"/>
+
+        <Label x:Name="TicketLastNameLabel" Content="Customer Last Name" HorizontalAlignment="Left" Height="26" Margin="191,571,0,0" VerticalAlignment="Top" Width="150" Grid.Column="4" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TicketLastNameTextBox" HorizontalAlignment="Left" Height="24" Margin="193,597,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Grid.Column="4" VerticalContentAlignment="Center"/>
+
+        <Label x:Name="TicketEmailLabel" Content="Customer Email" HorizontalAlignment="Left" Height="24" Margin="13,623,0,0" VerticalAlignment="Top" Width="148" Grid.Column="4" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TicketEmailTextBox" HorizontalAlignment="Left" Height="26" Margin="13,647,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Grid.Column="4" VerticalContentAlignment="Center"/>
+
+        <Label x:Name="TicketPhoneLabel" Content="Customer Phone No." HorizontalAlignment="Left" Height="24" Margin="191,623,0,0" VerticalAlignment="Top" Width="148" Grid.Column="4" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TicketPhoneTextBox" HorizontalAlignment="Left" Height="26" Margin="191,647,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Grid.Column="4" VerticalContentAlignment="Center"/>
+        
+        <Button x:Name="TicketUpdateButton" Content="Update" HorizontalAlignment="Left" Height="24" Margin="13,683,0,0" VerticalAlignment="Top" Width="148" Grid.Column="4" Click="TicketUpdateButton_Click"/>
+        <Button x:Name="TicketRemoveButton" Content="Remove" HorizontalAlignment="Left" Height="24" Margin="193,683,0,0" VerticalAlignment="Top" Width="148" Grid.Column="4" Click="TicketRemoveButton_Click"/>
+        <TextBox x:Name="TicketErrorTextbox" HorizontalAlignment="Center" Height="26" Margin="0,719,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.Column="4" IsReadOnly="True" Background="#FF343434" Foreground="White" VerticalContentAlignment="Center"/>
 
     </Grid>
 </Window>

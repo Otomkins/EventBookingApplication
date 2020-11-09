@@ -190,16 +190,21 @@ namespace Concert_Booking_WPF_App
             EventListBox.DisplayMemberPath = "Event_Name";
         }
 
+        private void PopulateTicketFields()
+        {
+            TicketListBox.ItemsSource = _bookingCodeLayer.RetrieveAllTickets();
+            TicketListBox.DisplayMemberPath = "TicketId";
+        }
+
         private void VenueListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (VenueListBox != null)
             {
                 _bookingCodeLayer.SetSelectedVenue(VenueListBox.SelectedItem);
+                PopulateEventFields();
 
                 if (_bookingCodeLayer.SelectedVenue != null)
                 {
-                    PopulateEventFields();
-
                     // Retrieves selected Venue's data
                     VenueNameTextBoxA.Text = _bookingCodeLayer.SelectedVenue.Name;
                     VenueCityTextBoxA.Text = _bookingCodeLayer.SelectedVenue.City;
@@ -223,8 +228,8 @@ namespace Concert_Booking_WPF_App
                 EventErrorTextboxA.Text = "";
                 EventErrorTextboxB.Text = "";
             }
-            else
-                _bookingCodeLayer.SelectedVenue = null;
+            //else
+            //    _bookingCodeLayer.SelectedVenue = null;
         }
 
         private void EventListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -232,7 +237,7 @@ namespace Concert_Booking_WPF_App
             if (EventListBox != null)
             {
                 _bookingCodeLayer.SetSelectedEvent(EventListBox.SelectedItem);
-                //PopulateTicketFields();
+                PopulateTicketFields();
 
                 if (_bookingCodeLayer.SelectedEvent != null)
                 {
@@ -246,13 +251,34 @@ namespace Concert_Booking_WPF_App
                     EventStartTimeComboBoxA.SelectedItem = _bookingCodeLayer.SelectedEvent.Start_Time;
                     EventEndTimeComboBoxA.SelectedItem = _bookingCodeLayer.SelectedEvent.End_Time;
                 }
-
                 // Clear error box when selecting
                 EventErrorTextboxA.Text = "";
                 EventErrorTextboxB.Text = "";
             }
             //else
-                //_bookingCodeLayer.SelectedVenue = null;
+                //_bookingCodeLayer.SelectedEvent = null;
+        }
+
+        private void TicketListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (TicketListBox != null)
+            {
+                _bookingCodeLayer.SetSelectedTicket(TicketListBox.SelectedItem);
+
+                if (_bookingCodeLayer.SelectedTicket != null)
+                {
+                    // Retrieves selected Ticket's data
+                    TicketFirstNameTextBox.Text = _bookingCodeLayer.SelectedTicket.First_Name;
+                    TicketLastNameTextBox.Text = _bookingCodeLayer.SelectedTicket.Last_Name;
+                    TicketEmailTextBox.Text = _bookingCodeLayer.SelectedTicket.Email;
+                    TicketPhoneTextBox.Text = _bookingCodeLayer.SelectedTicket.Phone;
+                }
+                // Clear error box when selecting
+                TicketErrorTextbox.Text = "";
+
+            }
+            //else
+            //    _bookingCodeLayer.SelectedTicket = null;
         }
 
         // VENUE METHODS
@@ -565,6 +591,17 @@ namespace Concert_Booking_WPF_App
             EventStartTimeComboBoxB.SelectedItem = "";
             EventEndTimeComboBoxB.SelectedItem = "";
             EventErrorTextboxB.Text = "";
+        }
+
+        // Ticket Methods
+        private void TicketUpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TicketRemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
