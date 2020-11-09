@@ -279,6 +279,7 @@ namespace Concert_Booking_WPF_App
 
                     UnrestrictAfterRemoveDecision();
                     PopulateVenueFields();
+                    EventListBox.ItemsSource = null;
                 }
 
                 if (VenueErrorTextboxA.Text.Contains("Update"))

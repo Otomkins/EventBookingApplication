@@ -27,9 +27,12 @@
 
 > *See 'Sprint 2 Start - ProjectBoard.png'  in 'Otomkins/EventBookingApplication/Sprint_2'.*
 
-<b>SPRINT 2 GOAL:</b>
+<b>SPRINT GOAL:</b>
 Continue from Sprint 1 and finish front representation of functionality. Add multiple testable filtering options with the addition of displayed ticket information. 
+
 - [ ] Implement CRUD functionality within app (Sprint 1).
+- [ ] Add additional WPF CRUD functions with Event data and present it appropriately.
+<b>Moved To Sprint 3:</b>
 - [ ] Add Read/Remove/Update functions with Ticket data inside.
 - [ ] Create additional exceptions functionality within Methods and unit test these.
 - [ ] Implement exceptions visually with app.
@@ -46,32 +49,92 @@ Continue from Sprint 1 and finish front representation of functionality. Add mul
 
 #### `USER STORIES`
 
-<b>1. Further Read Functionality:</b>
-As an organiser, I need to be able to see ticket and customer information relevant to my selection so that I can monitor each event.
+<b>1. WPF Front - Venues</b>
+As an organiser, I need to be able to see and manipulate the Venue data with the CRUD functionality.
 <b>Acceptance Criteria:</b>
 
-- [ ] User can now see ticket and customer data.
-- [ ]  Relevant data is retrieved based on the selected object.
+- [ ] User can now access the DB CRUD functions through the app for the Venue data.
+- [ ]  Displayed data is changed with the use of the functions.
 
-<b>2. Ticket Filter Functionality:</b>
-As an organiser, I need filtering functionality for the ticket info so that I can gather only relevant data.
+<b>2. WPF Front - Events</b>
+As an organiser, I need to be able to see and manipulate the Event data with the CRUD functionality.
 <b>Acceptance Criteria:</b>
 
-- [ ] User can filter and display ticket data as needed.
-- [ ] Data returned reflects filter and is displayed.
-- [ ] Alerts user when no data is found.
-- [ ] Filters conditions can be changed and removed.
+- [ ] User can now access the DB CRUD functions through the app for the Events data.
+- [ ]  Displayed data is changed with the use of the functions.
 
-<b>3. Event Filter Functionality:</b>
-As an organiser, I need filtering functionality for the events list so that I can gather only relevant data.
+### Initial Planning And Priority Change
+
+Initially, I planned to use the majority of this Sprint to add filtering functionality into my application. When I began implementing the CRUD functionality into the WPF application, it took more time then I was expecting and so I changed my Sprint priorities to reflect this. I moved some of the functionality into Sprint 3 so that I could make sure that the core application was working as planned. I then created new user stories that reflected these changes and added them.
+
+> *See 'Sprint 2 Start - UpdatedProjectBoard.png'  in 'Otomkins/EventBookingApplication/Sprint_2'.*
+
+### WPF Application
+
+From the previous Sprint, I had created a basic WPF front for my application with some of the functionality within it. Continuing this, I added the rest of the CRUD functionality for the Venue column. During this time, the Update functionality wasn't interacting with the GUI as expected. Looking into the code I created a new solution to querying the database appropriately. I did this for the Venue and Event Update methods. The Ticket functionality will be updated once the GUI displays and interacts with the Ticket data. This will be achieved in Sprint 3. After applying this code, I re-ran the unit tests to make sure that they still were passing. All tests passed and this functionality was implemented successfully.
+
+```c#
+        var q = bc.Venues.Where(v => v.VenueId == SelectedVenue.VenueId).FirstOrDefault();
+        q.Name = name;
+        q.City = city;
+        q.Email = email;
+        q.Phone = phone;
+        bc.SaveChanges();
+```
+```c#
+        var q = bc.Events.Where(v => v.EventId == SelectedEvent.EventId).FirstOrDefault();
+        q.Event_Name = eventName;
+        q.Main_Act = mainAct;
+        q.Supporting_Act = supportingAct;
+        q.Genre = genre;
+        q.Description = description;
+        q.Date = date;
+        q.Start_Time = startTime;
+        q.End_Time = endTime;
+        q.Capacity = capacity;
+        bc.SaveChanges();
+```
+This achieved the criteria for the 1st User Story and for the 1st Sprint Goal.
+
+<b>1. WPF Front - Venues</b>
+As an organiser, I need to be able to see and manipulate the Venue data with the CRUD functionality.
 <b>Acceptance Criteria:</b>
 
-- [ ] User can filter and display event data as needed.
-- [ ] Data returned reflects filter and is displayed.
-- [ ] Alerts user when no data is found.
-- [ ] Filters conditions can be changed and removed.
+- [x] User can now access the DB CRUD functions through the app for the Venue data.
+- [x] Displayed data is changed with the use of the functions.
 
+<b>SPRINT GOAL:</b>
+Continue from Sprint 1 and finish front representation of functionality. Add multiple testable filtering options with the addition of displayed ticket information. 
 
+- [x] Implement CRUD functionality within app (Sprint 1).
 
+The next step was to implement the same functionality with the Event data. I started designing the GUI in a way that it can easily present all of the data related to each event. After adding the WPF elements, I used the same functionality to communicate with the Event data. This was mostly similar to what I implemented with the Venue functionality, however, I was careful in the XAML to make sure that I kept and appropriately displayed the relations between the Events and their Venues.
 
+This achieved the criteria for the 2nd User Story and for the 2nd Sprint Goal.
 
+<b>SPRINT GOAL:</b>
+Continue from Sprint 1 and finish front representation of functionality. Add multiple testable filtering options with the addition of displayed ticket information. 
+
+- [x] Implement CRUD functionality within app (Sprint 1).
+- [x] Add additional WPF CRUD functions with Event data and present it appropriately.
+
+<b>2. WPF Front - Events</b>
+As an organiser, I need to be able to see and manipulate the Event data with the CRUD functionality.
+<b>Acceptance Criteria:</b>
+
+- [x] User can now access the DB CRUD functions through the app for the Events data.
+- [x] Displayed data is changed with the use of the functions.
+
+*See 'Application Demonstration.mkv'  in 'Otomkins/EventBookingApplication/Sprint_2'.*
+
+### Output Of Sprint Review
+
+At the end of Sprint 2, all of my User Stories had their criteria met and were staged for review. They passed review and were placed in the 'Done' column of my project board. Most of the Sprint goals were removed until the next Sprint. I passed these on to Sprint 3's goals to continue and complete.
+
+### Sprint Retrospective
+
+Overall, this was another successful Sprint. My priorities changed during, however, I planned appropriately and finished with the application in a good place. Even though I spent more time then I expected on some of the functionality, I still have plenty of time to realise my goals for the project. This was because of the large amount of preparing I did when I was planning ahead.
+
+Taking what I learnt from the previous Sprint, I was able to adapt and appropriately organise my goals. At the start, I planned for Sprint 3 to be where I can add extra functionality to the project. Unfortunately, I will not be able to do so before the deadline of the project. Nonetheless, it gives me space to comfortably implement everything that I had planned for an event organiser to be able to use the app.
+
+*See 'Sprint 2 End - ProjectBoard Start.png'  in 'Otomkins/EventBookingApplication/Sprint_2'.*
