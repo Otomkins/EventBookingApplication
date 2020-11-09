@@ -13,6 +13,8 @@ namespace Concert_Booking_Project
         public Event SelectedEvent { get; set; }
         public Ticket SelectedTicket { get; set; }
 
+        public Venue SelectedVenueUpdate { get; set; }
+
         // Read functionality
         public List<Venue> RetrieveAllVenues()
         {
@@ -56,7 +58,7 @@ namespace Concert_Booking_Project
         }
 
         public void AddEvent(string eventName, string mainAct, string genre, string description, DateTime date,
-            string startTime, string endTime, int capacity, string supportingAct = "N/A")
+            string startTime, string endTime, int capacity = 0, string supportingAct = "N/A")
         {
             using var bc = new BookingContext();
             var q = bc.Venues.Where(e => e.VenueId == SelectedVenue.VenueId);
@@ -147,6 +149,13 @@ namespace Concert_Booking_Project
             SelectedVenue.Email = email;
             SelectedVenue.Phone = phone;
             bc.SaveChanges();
+
+            var q = bc.Venues.Where(v => v.VenueId == SelectedVenue.VenueId).FirstOrDefault();
+            q.Name = name;
+            q.City = city;
+            q.Email = email;
+            q.Phone = phone;
+            bc.SaveChanges();
         }
 
         public void UpdateEventData(string eventName, string mainAct, string supportingAct, string genre, string description, DateTime date,
@@ -162,6 +171,19 @@ namespace Concert_Booking_Project
             SelectedEvent.Start_Time = startTime;
             SelectedEvent.End_Time = endTime;
             SelectedEvent.Capacity = capacity;
+            bc.SaveChanges();
+
+            //var q = bc.Events.Where(v => v.Venue.VenueId == SelectedVenue.VenueId).FirstOrDefault();
+            var q = bc.Events.Where(v => v.EventId == SelectedEvent.EventId).FirstOrDefault();
+            q.Event_Name = eventName;
+            q.Main_Act = mainAct;
+            q.Supporting_Act = supportingAct;
+            q.Genre = genre;
+            q.Description = description;
+            q.Date = date;
+            q.Start_Time = startTime;
+            q.End_Time = endTime;
+            q.Capacity = capacity;
             bc.SaveChanges();
         }
 
