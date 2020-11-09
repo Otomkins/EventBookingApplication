@@ -82,6 +82,26 @@ namespace Concert_Booking_Project
             bc.SaveChanges();
         }
 
+        public void AddTicket(string firstName, string lastName, string email, string phone)
+        {
+            using var bc = new BookingContext();
+            var q = bc.Events.Where(e => e.EventId == SelectedEvent.EventId);
+            foreach (var item in q)
+            {
+                var newTicket = new Ticket
+                {
+                    Event = item,
+                    First_Name = firstName,
+                    Last_Name = lastName,
+                    Email = email,
+                    Phone = phone
+
+                };
+                bc.Tickets.Add(newTicket);
+            }
+            bc.SaveChanges();
+        } // Only used to create data for demonstration
+
         // Remove functionality
         public void RemoveVenue() // Removes related Event and Ticket data
         {
@@ -196,28 +216,26 @@ namespace Concert_Booking_Project
             SelectedTicket.Phone = phone;
             bc.SaveChanges();
         }
-
-
-
-
-        public void AddTicket(string firstName, string lastName, string email, string phone)
+        
+        // Filter Functionality
+        public List<Event> FilterEventsByName(string filterText)
         {
             using var bc = new BookingContext();
-            var q = bc.Events.Where(e => e.EventId == SelectedEvent.EventId);
-            foreach (var item in q)
-            {
-                var newTicket = new Ticket
-                {
-                    Event = item,
-                    First_Name = firstName,
-                    Last_Name = lastName,
-                    Email = email,
-                    Phone = phone
-                   
-                };
-                bc.Tickets.Add(newTicket);
-            }
-            bc.SaveChanges();
+            var q = bc.Events.Where(e => e.Event_Name.Contains(filterText));
+            return q.ToList();
+        }
+        public List<Event> FilterEventsByDate(DateTime startDate, DateTime endDate)
+        {
+            using var bc = new BookingContext();
+            var q = bc.Events.Where(e => e.Date > startDate && e.Date < endDate);
+            return q.ToList();
+        }
+
+        public List<Ticket> FilterTicketsById(int ticketId)
+        {
+            using var bc = new BookingContext();
+            var q = bc.Tickets.Where(t => t.TicketId == ticketId);
+            return q.ToList();
         }
     }
 }

@@ -14,6 +14,10 @@
             <ColumnDefinition Width="209*"/>
             <ColumnDefinition Width="355*"/>
         </Grid.ColumnDefinitions>
+        <Canvas Grid.Column="1" HorizontalAlignment="Center" Height="685" Margin="0,99,0,0" VerticalAlignment="Top" Width="378" Background="WhiteSmoke"/>
+
+        <Canvas Grid.Column="3" HorizontalAlignment="Center" Height="745" Margin="0,39,0,0" VerticalAlignment="Top" Width="208" Background="WhiteSmoke"/>
+
         <Grid HorizontalAlignment="Center" Height="66" VerticalAlignment="Top" Width="378" Grid.Column="1">
             <TextBox HorizontalAlignment="Center" Height="46" Text="Event Booking Application" TextWrapping="Wrap" VerticalAlignment="Center" Width="358" FontSize="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold" BorderThickness="2,2,2,2"/>
         </Grid>
@@ -21,9 +25,10 @@
 
         <!-- List Box Label Headers -->
         <Label x:Name="VenueListLabel" Content="Venue List" HorizontalAlignment="Center" Height="33" Margin="0,66,0,0" VerticalAlignment="Top" Width="378" Grid.Column="1" Background="#FF595959" Foreground="White" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Normal"/>
-        <Label x:Name="EventsListLabel" Content="Events List" Grid.Column="2" HorizontalAlignment="Center" Height="33" Margin="0,1,0,0" VerticalAlignment="Top" Width="558" Background="#FF595959" Foreground="White" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Normal"/>
-
-        <Label x:Name="TicketsListLabel" Content="Tickets List" Grid.Column="4" HorizontalAlignment="Center" Height="33" Margin="0,1,0,0" VerticalAlignment="Top" Width="286" Background="#FF595959" Foreground="White" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Normal"/>
+        <Label x:Name="EventsListLabel" Content="Events List" Grid.Column="2" HorizontalAlignment="Center" Height="33" Margin="0,1,0,0" VerticalAlignment="Top" Width="558" Background="#FF595959" Foreground="White" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Normal" BorderThickness="1,0,1,0"/>
+        <Label x:Name="FiltersLabel" Content="Filters" Grid.Column="3" HorizontalAlignment="Center" Height="33" Margin="0,1,0,0" VerticalAlignment="Top" Width="208" Background="#FF595959" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" BorderThickness="1,0,1,0"/>
+        <Label x:Name="TicketsListLabel" Content="Tickets List" Grid.Column="4" HorizontalAlignment="Center" Height="33" Margin="0,1,0,0" VerticalAlignment="Top" Width="356" Background="#FF595959" Foreground="White" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Normal" BorderThickness="1,0,1,0"/>
+        <Label x:Name="BulkDeleteLabel" Content="Bulk Delete" Grid.Column="3" HorizontalAlignment="Center" Height="33" Margin="0,499,0,0" VerticalAlignment="Top" Width="208" Background="#FF595959" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="18"/>
 
 
         <!-- List Box Displays -->
@@ -31,10 +36,8 @@
         <ListBox x:Name="EventListBox" Grid.Column="2" HorizontalAlignment="Center" Height="154" VerticalAlignment="Top" Width="538" Margin="0,37,0,0" SelectionChanged="EventListBox_SelectionChanged" BorderBrush="#FFB4B4B4" BorderThickness="10,2,2,2"/>
         <ListBox x:Name="TicketListBox" Grid.Column="4" HorizontalAlignment="Center" Height="492" Margin="0,39,0,0" VerticalAlignment="Top" Width="336" BorderThickness="10,2,2,2" BorderBrush="#FFB4B4B4" SelectionChanged="TicketListBox_SelectionChanged"/>
 
-
-        <!-- Venue Interact -->
         <!-- View, Update & Delete -->
-        <Label x:Name="VenueInteractLabelA" Content="View/Update/Delete Venue Data" HorizontalAlignment="Left" Height="30" Margin="25,320,0,0" VerticalAlignment="Top" Width="214" Grid.Column="1" FontSize="14"/>
+        <Label x:Name="VenueInteractLabelA" Content="View/Update/Delete Venue Data" HorizontalAlignment="Left" Height="30" Margin="25,320,0,0" VerticalAlignment="Top" Width="229" Grid.Column="1" FontSize="14" FontWeight="Bold"/>
 
         <Label x:Name="VenueNameLabelA" Content="Venue Name" HorizontalAlignment="Left" Height="24" Margin="25,352,0,0" VerticalAlignment="Top" Width="149" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
         <TextBox x:Name="VenueNameTextBoxA" HorizontalAlignment="Left" Height="26" Margin="25,375,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Grid.Column="1" VerticalContentAlignment="Center"/>
@@ -54,7 +57,7 @@
         <TextBox x:Name="VenueErrorTextboxA" HorizontalAlignment="Center" Height="25" Margin="0,506,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.Column="1" IsReadOnly="True" Background="#FF343434" Foreground="White" VerticalContentAlignment="Center"/>
 
         <!-- Add -->
-        <Label x:Name="VenueInteractLabelB" Content="Add New Venue Data" HorizontalAlignment="Left" Height="30" Margin="25,539,0,0" VerticalAlignment="Top" Width="214" Grid.Column="1" VerticalContentAlignment="Center" FontSize="14"/>
+        <Label x:Name="VenueInteractLabelB" Content="Add New Venue Data" HorizontalAlignment="Left" Height="30" Margin="25,539,0,0" VerticalAlignment="Top" Width="214" Grid.Column="1" VerticalContentAlignment="Center" FontSize="14" FontWeight="Bold"/>
 
         <Label x:Name="VenueNameLabelB" Content="Venue Name" HorizontalAlignment="Left" Height="25" Margin="25,571,0,0" VerticalAlignment="Top" Width="149" Grid.Column="1" VerticalContentAlignment="Center"/>
         <TextBox x:Name="VenueNameTextBoxB" HorizontalAlignment="Left" Height="25" Margin="25,596,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Grid.Column="1" VerticalContentAlignment="Center"/>
@@ -73,9 +76,8 @@
 
         <TextBox x:Name="VenueErrorTextboxB" HorizontalAlignment="Center" Height="25" Margin="0,719,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.Column="1" IsReadOnly="True" Background="#FF343434" Foreground="White" VerticalContentAlignment="Center"/>
 
-        <!-- Event Interact -->
         <!-- View, Update & Delete -->
-        <Label x:Name="EventInteractLabelA" Content="View/Update/Delete Event Data" HorizontalAlignment="Left" Height="30" Margin="14,209,0,0" VerticalAlignment="Top" Width="214" Grid.Column="2" FontSize="14"/>
+        <Label x:Name="EventInteractLabelA" Content="View/Update/Delete Event Data" HorizontalAlignment="Left" Height="30" Margin="14,209,0,0" VerticalAlignment="Top" Width="228" Grid.Column="2" FontSize="14" FontWeight="Bold"/>
 
         <Label x:Name="EventNameLabelA" Content="Event Name" HorizontalAlignment="Left" Height="24" Margin="14,241,0,0" VerticalAlignment="Top" Width="150" Grid.Column="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
         <TextBox x:Name="EventNameTextBoxA" HorizontalAlignment="Left" Height="26" Margin="14,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.Column="2" VerticalContentAlignment="Center"/>
@@ -92,11 +94,11 @@
         <Label x:Name="EventDescriptionLabelA" Content="Event Description" HorizontalAlignment="Left" Height="26" Margin="14,345,0,0" VerticalAlignment="Top" Width="150" Grid.Column="2" VerticalContentAlignment="Center"/>
         <TextBox x:Name="EventDescriptionTextBoxA" Grid.Column="2" HorizontalAlignment="Left" Height="54" Margin="14,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="342"/>
 
-        <Calendar x:Name="EventDateCalendarA" Grid.Column="2" HorizontalAlignment="Left" Height="167" Margin="370,196,0,0" VerticalAlignment="Top" Width="178"/>
-        <Label x:Name="EventStartTimeLabelA" Content="Start Time" HorizontalAlignment="Left" Height="25" Margin="382,368,0,0" VerticalAlignment="Top" Width="72" Grid.Column="2" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="EventStartTimeComboBoxA" Grid.Column="2" HorizontalAlignment="Left" Height="25" Margin="454,370,0,0" VerticalAlignment="Top" Width="70"/>
-        <Label x:Name="EventEndTimeLabelA" Content="End Time" HorizontalAlignment="Left" Height="25" Margin="382,406,0,0" VerticalAlignment="Top" Width="72" Grid.Column="2" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="EventEndTimeComboBoxA" Grid.Column="2" HorizontalAlignment="Left" Height="25" Margin="454,406,0,0" VerticalAlignment="Top" Width="70"/>
+        <Calendar x:Name="EventDateCalendarA" Grid.Column="2" HorizontalAlignment="Left" Height="167" Margin="365,196,0,0" VerticalAlignment="Top" Width="178"/>
+        <Label x:Name="EventStartTimeLabelA" Content="Start Time" HorizontalAlignment="Left" Height="25" Margin="377,368,0,0" VerticalAlignment="Top" Width="72" Grid.Column="2" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="EventStartTimeComboBoxA" Grid.Column="2" HorizontalAlignment="Left" Height="25" Margin="449,370,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label x:Name="EventEndTimeLabelA" Content="End Time" HorizontalAlignment="Left" Height="25" Margin="377,406,0,0" VerticalAlignment="Top" Width="72" Grid.Column="2" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="EventEndTimeComboBoxA" Grid.Column="2" HorizontalAlignment="Left" Height="25" Margin="449,406,0,0" VerticalAlignment="Top" Width="70"/>
 
 
         <Button x:Name="EventUpdateButton" Content="Update" HorizontalAlignment="Left" Height="25" Margin="18,441,0,0" VerticalAlignment="Top" Width="148" Grid.Column="2" Click="EventUpdateButton_Click"/>
@@ -104,7 +106,7 @@
         <TextBox x:Name="EventErrorTextboxA" HorizontalAlignment="Left" Height="25" Margin="344,441,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Grid.Column="2" IsReadOnly="True" Background="#FF343434" Foreground="White" VerticalContentAlignment="Center"/>
 
         <!-- Add -->
-        <Label x:Name="EventInteractLabelB" Content="View/Update/Delete Event Data" HorizontalAlignment="Left" Height="30" Margin="14,488,0,0" VerticalAlignment="Top" Width="214" Grid.Column="2" FontSize="14"/>
+        <Label x:Name="EventInteractLabelB" Content="View/Update/Delete Event Data" HorizontalAlignment="Left" Height="30" Margin="14,488,0,0" VerticalAlignment="Top" Width="214" Grid.Column="2" FontSize="14" FontWeight="Bold"/>
 
         <Label x:Name="EventNameLabelB" Content="Event Name" HorizontalAlignment="Left" Height="24" Margin="14,520,0,0" VerticalAlignment="Top" Width="150" Grid.Column="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
         <TextBox x:Name="EventNameTextBoxB" HorizontalAlignment="Left" Height="26" Margin="14,544,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.Column="2" VerticalContentAlignment="Center"/>
@@ -121,20 +123,19 @@
         <Label x:Name="EventDescriptionLabelB" Content="Event Description" HorizontalAlignment="Left" Height="26" Margin="14,624,0,0" VerticalAlignment="Top" Width="150" Grid.Column="2" VerticalContentAlignment="Center"/>
         <TextBox x:Name="EventDescriptionTextBoxB" Grid.Column="2" HorizontalAlignment="Left" Height="54" Margin="14,652,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="342"/>
 
-        <Calendar x:Name="EventDateCalendarB" Grid.Column="2" HorizontalAlignment="Left" Height="168" Margin="370,474,0,0" VerticalAlignment="Top" Width="178"/>
-        <Label x:Name="EventStartTimeLabelB" Content="Start Time" HorizontalAlignment="Left" Height="26" Margin="382,646,0,0" VerticalAlignment="Top" Width="72" Grid.Column="2" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="EventStartTimeComboBoxB" Grid.Column="2" HorizontalAlignment="Left" Height="26" Margin="454,648,0,0" VerticalAlignment="Top" Width="70"/>
-        <Label x:Name="EventEndTimeLabelB" Content="End Time" HorizontalAlignment="Left" Height="26" Margin="382,684,0,0" VerticalAlignment="Top" Width="72" Grid.Column="2" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="EventEndTimeComboBoxB" Grid.Column="2" HorizontalAlignment="Left" Height="26" Margin="454,684,0,0" VerticalAlignment="Top" Width="70"/>
+        <Calendar x:Name="EventDateCalendarB" Grid.Column="2" HorizontalAlignment="Left" Height="168" Margin="365,474,0,0" VerticalAlignment="Top" Width="178"/>
+        <Label x:Name="EventStartTimeLabelB" Content="Start Time" HorizontalAlignment="Left" Height="26" Margin="377,646,0,0" VerticalAlignment="Top" Width="72" Grid.Column="2" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="EventStartTimeComboBoxB" Grid.Column="2" HorizontalAlignment="Left" Height="26" Margin="449,648,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label x:Name="EventEndTimeLabelB" Content="End Time" HorizontalAlignment="Left" Height="26" Margin="377,684,0,0" VerticalAlignment="Top" Width="72" Grid.Column="2" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="EventEndTimeComboBoxB" Grid.Column="2" HorizontalAlignment="Left" Height="26" Margin="449,684,0,0" VerticalAlignment="Top" Width="70"/>
 
         <Button x:Name="EventAddButton" Content="Add" HorizontalAlignment="Left" Height="24" Margin="18,720,0,0" VerticalAlignment="Top" Width="148" Grid.Column="2" Click="EventAddButton_Click"/>
         <Button x:Name="EventClearButton" Content="Clear" HorizontalAlignment="Left" Height="24" Margin="180,720,0,0" VerticalAlignment="Top" Width="148" Grid.Column="2" Click="EventClearButton_Click"/>
         <TextBox x:Name="EventErrorTextboxB" HorizontalAlignment="Left" Height="26" Margin="344,719,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Grid.Column="2" IsReadOnly="True" Background="#FF343434" Foreground="White" VerticalContentAlignment="Center"/>
 
-        <!-- Ticket Interact -->
         <!-- View, Update & Delete -->
-        <Label x:Name="TicketInteractLabel" Content="View/Update/Delete Ticket Data" HorizontalAlignment="Left" Height="30" Margin="13,539,0,0" VerticalAlignment="Top" Width="214" Grid.Column="4" VerticalContentAlignment="Center" FontSize="14"/>
-       
+        <Label x:Name="TicketInteractLabel" Content="View/Update/Delete Ticket Data" HorizontalAlignment="Left" Height="30" Margin="13,539,0,0" VerticalAlignment="Top" Width="229" Grid.Column="4" VerticalContentAlignment="Center" FontSize="14" FontWeight="Bold"/>
+
         <Label x:Name="TicketFirstNameLabel" Content="Customer First Name" HorizontalAlignment="Left" Height="26" Margin="13,571,0,0" VerticalAlignment="Top" Width="148" Grid.Column="4" VerticalContentAlignment="Center"/>
         <TextBox x:Name="TicketFirstNameTextBox" HorizontalAlignment="Left" Height="24" Margin="13,597,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Grid.Column="4" VerticalContentAlignment="Center"/>
 
@@ -146,10 +147,42 @@
 
         <Label x:Name="TicketPhoneLabel" Content="Customer Phone No." HorizontalAlignment="Left" Height="24" Margin="191,623,0,0" VerticalAlignment="Top" Width="148" Grid.Column="4" VerticalContentAlignment="Center"/>
         <TextBox x:Name="TicketPhoneTextBox" HorizontalAlignment="Left" Height="26" Margin="191,647,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" Grid.Column="4" VerticalContentAlignment="Center"/>
-        
+
         <Button x:Name="TicketUpdateButton" Content="Update" HorizontalAlignment="Left" Height="24" Margin="13,683,0,0" VerticalAlignment="Top" Width="148" Grid.Column="4" Click="TicketUpdateButton_Click"/>
         <Button x:Name="TicketRemoveButton" Content="Remove" HorizontalAlignment="Left" Height="24" Margin="193,683,0,0" VerticalAlignment="Top" Width="148" Grid.Column="4" Click="TicketRemoveButton_Click"/>
         <TextBox x:Name="TicketErrorTextbox" HorizontalAlignment="Center" Height="26" Margin="0,719,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.Column="4" IsReadOnly="True" Background="#FF343434" Foreground="White" VerticalContentAlignment="Center"/>
+
+        <!-- Filters Interact -->
+        <!-- Event Filters -->
+        <Label x:Name="EventFiltersLabel" Content="Events Filters" Grid.Column="3" HorizontalAlignment="Left" Height="26" Margin="10,39,0,0" VerticalAlignment="Top" Width="150" VerticalContentAlignment="Center" FontSize="14" FontWeight="Bold"/>
+
+        <Label x:Name="EventFilterContentsLabel" Content="Filter By Event Name Contents:" Grid.Column="3" HorizontalAlignment="Center" Height="26" Margin="0,72,0,0" VerticalAlignment="Top" Width="188" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="EventFilterContentsTextBox" Grid.Column="3" HorizontalAlignment="Center" Height="25" Margin="0,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" VerticalContentAlignment="Center"/>
+        <Button x:Name="EventContentsFilterButton" Content="Filter" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="10,135,0,0" VerticalAlignment="Top" Width="85" Click="EventContentsFilterButton_Click"/>
+        <Button x:Name="EventContentsResetButton" Content="Reset" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="114,135,0,0" VerticalAlignment="Top" Width="85" Click="EventContentsResetButton_Click"/>
+
+        <Label x:Name="EventFilterDateLabel" Content="Date Filter (yyyy/mm/dd):" Grid.Column="3" HorizontalAlignment="Center" Height="26" Margin="0,185,0,0" VerticalAlignment="Top" Width="189"/>
+        <TextBox x:Name="EventFilterDateTextboxA" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="10,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="EventFilterDateTextboxB" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="114,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" VerticalContentAlignment="Center"/>
+        <Button x:Name="EventDateFilterButton" Content="Filter" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="10,248,0,0" VerticalAlignment="Top" Width="85" Click="EventDateFilterButton_Click"/>
+        <Button x:Name="EventDataResetButton" Content="Reset" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="114,248,0,0" VerticalAlignment="Top" Width="85" Click="EventDataResetButton_Click"/>
+        <TextBox x:Name="EventDateFilterErrorTextBox" Grid.Column="3" HorizontalAlignment="Center" Height="25" Margin="0,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" VerticalContentAlignment="Center" Background="#FF343434" Foreground="White" IsReadOnly="True"/>
+
+        <!-- Ticket Filters -->
+        <Label x:Name="TicketFiltersLabel" Content="Ticket Filters" Grid.Column="3" HorizontalAlignment="Left" Height="26" Margin="12,322,0,0" VerticalAlignment="Top" Width="150" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="14"/>
+
+        <Label x:Name="TicketFilterContentsLabel" Content="Filter By Event Name Contents" Grid.Column="3" HorizontalAlignment="Center" Height="26" Margin="0,356,0,0" VerticalAlignment="Top" Width="188" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TicketFilterContentsTextBox" Grid.Column="3" HorizontalAlignment="Center" Height="26" Margin="0,384,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" VerticalContentAlignment="Center"/>
+        <Button x:Name="TicketDateFilterButton" Content="Filter" Grid.Column="3" HorizontalAlignment="Left" Height="26" Margin="12,418,0,0" VerticalAlignment="Top" Width="84"/>
+        <Button x:Name="TicketDataResetButton" Content="Reset" Grid.Column="3" HorizontalAlignment="Left" Height="26" Margin="116,418,0,0" VerticalAlignment="Top" Width="84"/>
+        <TextBox x:Name="TicketContentsFilterErrorTextBox" Grid.Column="3" HorizontalAlignment="Left" Height="24" Margin="12,455,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" VerticalContentAlignment="Center" Background="#FF343434" Foreground="White" IsReadOnly="True"/>
+
+        <Label x:Name="EventRemoveDateLabel" Content="Date Filter (yyyy/mm/dd):" Grid.Column="3" HorizontalAlignment="Center" Height="26" Margin="0,538,0,0" VerticalAlignment="Top" Width="189"/>
+        <TextBox x:Name="EventRemoveDateTextboxA" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="11,566,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="EventRemoveDateTextboxB" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="115,566,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" VerticalContentAlignment="Center"/>
+        <Button x:Name="EventDateBulkRemoveButton" Content="Delete" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="11,600,0,0" VerticalAlignment="Top" Width="85"/>
+        <Button x:Name="EventDateBulkClearButton" Content="Clear" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="115,600,0,0" VerticalAlignment="Top" Width="85"/>
+        <TextBox x:Name="EventDateBulkErrorTextBox" Grid.Column="3" HorizontalAlignment="Center" Height="25" Margin="0,634,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" VerticalContentAlignment="Center" Background="#FF343434" Foreground="White" IsReadOnly="True"/>
 
     </Grid>
 </Window>
