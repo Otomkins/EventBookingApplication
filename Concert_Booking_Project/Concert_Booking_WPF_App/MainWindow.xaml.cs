@@ -633,18 +633,79 @@ namespace Concert_Booking_WPF_App
                 _filteringEventSByContents = false;
             }
             else
-                EventDateFilterErrorTextBox.Text = "There is not filter applied";
+                EventDateFilterErrorTextBox.Text = "There is no filter applied";
         }
 
         bool _filteringEventSByDate = false; // Specifies if filter is applied
         private void EventDateFilterButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (EventFilterDateTextboxA.Text == "" || EventFilterDateTextboxB.Text == "")
+                EventDateFilterErrorTextBox.Text = "Please specify filer criteria";
+            else
+            {
+                EventListBox.ItemsSource = _bookingCodeLayer.FilterEventsByDate(DateTime.Parse(EventFilterDateTextboxA.Text), DateTime.Parse(EventFilterDateTextboxB.Text));
+                EventListBox.DisplayMemberPath = "Event_Name";
+                EventDateFilterErrorTextBox.Text = "";
+                _filteringEventSByDate = true;
+            }
         }
 
         private void EventDataResetButton_Click(object sender, RoutedEventArgs e)
         {
+            if (_filteringEventSByDate == true)
+            {
+                PopulateEventFields();
+                EventDateFilterErrorTextBox.Text = "";
+                EventFilterDateTextboxA.Text = "";
+                EventFilterDateTextboxB.Text = "";
+                _filteringEventSByDate = false;
+            }
+            else
+                EventDateFilterErrorTextBox.Text = "There is no filter applied";
+        }
 
+        bool _filteringTicketsByContents = false; // Specifies if filter is applied
+        private void TicketDateFilterButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (TicketFilterContentsTextBox.Text == "")
+                TicketContentsFilterErrorTextBox.Text = "Please specify filer criteria";
+            else
+            {
+                TicketListBox.ItemsSource = _bookingCodeLayer.FilterTicketsById(int.Parse(TicketFilterContentsTextBox.Text));
+                TicketListBox.DisplayMemberPath = "TicketId";
+                TicketContentsFilterErrorTextBox.Text = "";
+                _filteringTicketsByContents = true;
+            }
+        }
+
+        private void TicketDataResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_filteringTicketsByContents == true)
+            {
+                PopulateTicketFields();
+                TicketContentsFilterErrorTextBox.Text = "";
+                TicketFilterContentsTextBox.Text = "";
+                _filteringTicketsByContents = false;
+            }
+            else
+                TicketContentsFilterErrorTextBox.Text = "There is no filter applied";
+        }
+
+        private void EventDateBulkRemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (EventRemoveDateTextbox.Text == "")
+                EventDateBulkErrorTextBox.Text = "Please specify a date";
+            else
+            {
+                _bookingCodeLayer.RemoveOutOfDateEventsAndTickets(DateTime.Parse(EventRemoveDateTextbox.Text));
+                PopulateEventFields();
+            }
+        }
+
+        private void EventDateBulkClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            EventRemoveDateTextbox.Text = "";
+            EventDateBulkErrorTextBox.Text = "";
         }
     }
 

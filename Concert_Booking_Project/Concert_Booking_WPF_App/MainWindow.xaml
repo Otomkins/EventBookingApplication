@@ -173,15 +173,15 @@
 
         <Label x:Name="TicketFilterContentsLabel" Content="Filter By Event Name Contents" Grid.Column="3" HorizontalAlignment="Center" Height="26" Margin="0,356,0,0" VerticalAlignment="Top" Width="188" VerticalContentAlignment="Center"/>
         <TextBox x:Name="TicketFilterContentsTextBox" Grid.Column="3" HorizontalAlignment="Center" Height="26" Margin="0,384,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" VerticalContentAlignment="Center"/>
-        <Button x:Name="TicketDateFilterButton" Content="Filter" Grid.Column="3" HorizontalAlignment="Left" Height="26" Margin="12,418,0,0" VerticalAlignment="Top" Width="84"/>
-        <Button x:Name="TicketDataResetButton" Content="Reset" Grid.Column="3" HorizontalAlignment="Left" Height="26" Margin="116,418,0,0" VerticalAlignment="Top" Width="84"/>
+        <Button x:Name="TicketDateFilterButton" Content="Filter" Grid.Column="3" HorizontalAlignment="Left" Height="26" Margin="12,418,0,0" VerticalAlignment="Top" Width="84" Click="TicketDateFilterButton_Click"/>
+        <Button x:Name="TicketDataResetButton" Content="Reset" Grid.Column="3" HorizontalAlignment="Left" Height="26" Margin="116,418,0,0" VerticalAlignment="Top" Width="84" Click="TicketDataResetButton_Click"/>
         <TextBox x:Name="TicketContentsFilterErrorTextBox" Grid.Column="3" HorizontalAlignment="Left" Height="24" Margin="12,455,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" VerticalContentAlignment="Center" Background="#FF343434" Foreground="White" IsReadOnly="True"/>
 
-        <Label x:Name="EventRemoveDateLabel" Content="Date Filter (yyyy/mm/dd):" Grid.Column="3" HorizontalAlignment="Center" Height="26" Margin="0,538,0,0" VerticalAlignment="Top" Width="189"/>
-        <TextBox x:Name="EventRemoveDateTextboxA" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="11,566,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="EventRemoveDateTextboxB" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="115,566,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" VerticalContentAlignment="Center"/>
-        <Button x:Name="EventDateBulkRemoveButton" Content="Delete" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="11,600,0,0" VerticalAlignment="Top" Width="85"/>
-        <Button x:Name="EventDateBulkClearButton" Content="Clear" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="115,600,0,0" VerticalAlignment="Top" Width="85"/>
+        <!-- Event Bulk Delete -->
+        <Label x:Name="EventRemoveDateLabel" Content="Remove Up Until (yyyy/mm/dd):" Grid.Column="3" HorizontalAlignment="Center" Height="26" Margin="0,538,0,0" VerticalAlignment="Top" Width="189"/>
+        <TextBox x:Name="EventRemoveDateTextbox" Grid.Column="3" HorizontalAlignment="Center" Height="25" Margin="0,565,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" VerticalContentAlignment="Center"/>
+        <Button x:Name="EventDateBulkRemoveButton" Content="Delete" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="11,600,0,0" VerticalAlignment="Top" Width="85" Click="EventDateBulkRemoveButton_Click"/>
+        <Button x:Name="EventDateBulkClearButton" Content="Clear" Grid.Column="3" HorizontalAlignment="Left" Height="25" Margin="115,600,0,0" VerticalAlignment="Top" Width="85" Click="EventDateBulkClearButton_Click"/>
         <TextBox x:Name="EventDateBulkErrorTextBox" Grid.Column="3" HorizontalAlignment="Center" Height="25" Margin="0,634,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" VerticalContentAlignment="Center" Background="#FF343434" Foreground="White" IsReadOnly="True"/>
 
     </Grid>
