@@ -221,7 +221,7 @@ namespace Concert_Booking_Project
         public List<Event> FilterEventsByName(string filterText)
         {
             using var bc = new BookingContext();
-            var q = bc.Events.Where(e => e.Event_Name.Contains(filterText));
+            var q = bc.Events.Where(e => e.Event_Name.Contains(filterText) && e.Venue.VenueId == SelectedVenue.VenueId);
             return q.ToList();
         }
         public List<Event> FilterEventsByDate(DateTime startDate, DateTime endDate)

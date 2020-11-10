@@ -28,6 +28,7 @@ namespace Concert_Booking_WPF_App
 
         bool _venueUpdateConfirm = false;
         bool _eventUpdateConfirm = false;
+        bool _ticketUpdateConfirm = false;
 
         List<string> genres = new List<string>()
         {
@@ -469,8 +470,6 @@ namespace Concert_Booking_WPF_App
 
                     _bookingCodeLayer.UpdateEventData(name, mainAct, supportingAct, genre, description, date, startTime, endTime, 0);
 
-                    _bookingCodeLayer.SelectedEvent = null;
-
                     EventUpdateButton.Content = "Update";
                     EventRemoveButton.Content = "Remove";
 
@@ -596,20 +595,126 @@ namespace Concert_Booking_WPF_App
         // Ticket Methods
         private void TicketUpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            var firstName = TicketFirstNameTextBox.Text;
-            var lastName = TicketLastNameTextBox.Text;
-            var email = TicketEmailTextBox.Text;
-            var phone = TicketPhoneTextBox.Text;
+            //var firstName = TicketFirstNameTextBox.Text;
+            //var lastName = TicketLastNameTextBox.Text;
+            //var email = TicketEmailTextBox.Text;
+            //var phone = TicketPhoneTextBox.Text;
 
-            _bookingCodeLayer.AddTicket(firstName, lastName, email, phone);
-            PopulateTicketFields();
+            //_bookingCodeLayer.AddTicket(firstName, lastName, email, phone);
+            //PopulateTicketFields();
+
+
+            if (TicketUpdateButton.Content == "Yes")
+            {
+                if (TicketErrorTextbox.Text.Contains("Remove"))
+                {
+                    // Comfirmation Remove User Button functions
+                    TicketUpdateButton.Content = "Update";
+                    TicketRemoveButton.Content = "Remove";
+
+                    // Clears Event fileds when removed
+                    TicketFirstNameTextBox.Text = "";
+                    TicketLastNameTextBox.Text = "";
+                    TicketEmailTextBox.Text = "";
+                    TicketPhoneTextBox.Text = "";
+                    _bookingCodeLayer.RemoveTicket();
+
+                    _bookingCodeLayer.SelectedTicket = null;
+                    TicketListBox.SelectedItem = null;
+
+                    // Resume acces to other buttons after confirmation
+                    _ticketRemoveConfirm = false;
+
+                    UnrestrictAfterRemoveDecision();
+                    PopulateTicketFields();
+                }
+
+                if (TicketErrorTextbox.Text.Contains("Update"))
+                {
+                    var firstName = TicketFirstNameTextBox.Text;
+                    var lastName = TicketLastNameTextBox.Text;
+                    var email = TicketEmailTextBox.Text;
+                    var phone = TicketPhoneTextBox.Text;
+
+                    _bookingCodeLayer.UpdateTicketData(firstName, lastName, email, phone);
+
+                    _bookingCodeLayer.SelectedTicket = null;
+
+                    TicketUpdateButton.Content = "Update";
+                    TicketRemoveButton.Content = "Remove";
+
+                    // Clears Event fileds when removed
+                    TicketFirstNameTextBox.Text = "";
+                    TicketLastNameTextBox.Text = "";
+                    TicketEmailTextBox.Text = "";
+                    TicketPhoneTextBox.Text = "";
+
+                    _bookingCodeLayer.SelectedTicket = null;
+                    TicketListBox.SelectedItem = null;
+
+                    UnrestrictAfterRemoveDecision();
+                    PopulateEventFields();
+                }
+            }
+            else
+            {
+                if (_bookingCodeLayer.SelectedTicket == null)
+                    TicketErrorTextbox.Text = "Please select a Ticket to update";
+                else
+                {
+                    TicketErrorTextbox.Text = $"Update {_bookingCodeLayer.SelectedTicket.TicketId}?";
+                    _ticketUpdateConfirm = true;
+                }
+
+                // Changes buttons and functions for update confirmation
+                if (_ticketUpdateConfirm == true)
+                {
+                    TicketUpdateButton.Content = "Yes";
+                    TicketRemoveButton.Content = "No";
+
+                    // Restrictions when confirming removal
+                    RestrictWhenRemoving();
+                }
+            }
         }
 
         private void TicketRemoveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (TicketRemoveButton.Content == "No")
+            {
+                // Second Button functions - Cancelling removal
+                TicketErrorTextbox.Text = "";
+                TicketUpdateButton.Content = "Update";
+                TicketRemoveButton.Content = "Remove";
 
+                // Resume acces to other buttons after confirmation
+                _ticketRemoveConfirm = false;
+                UnrestrictAfterRemoveDecision();
+            }
+            else
+            {
+                // Normal Remove Ticket Button functions
+                if (_bookingCodeLayer.SelectedTicket == null)
+                    TicketErrorTextbox.Text = "Please select a Ticket to remove";
+                else
+                {
+                    TicketErrorTextbox.Text = $"Remove {_bookingCodeLayer.SelectedTicket.TicketId}?";
+                    _ticketRemoveConfirm = true;
+                }
+
+                // Changes buttons and functions for removal confirmation
+                if (_ticketRemoveConfirm == true)
+                {
+                    TicketUpdateButton.Content = "Yes";
+                    TicketRemoveButton.Content = "No";
+
+                    // Restrictions when confirming removal
+                    RestrictWhenRemoving();
+                }
+            }
         }
 
+        // Filter Methods
         bool _filteringEventSByContents = false; // Specifies if filter is applied
         private void EventContentsFilterButton_Click(object sender, RoutedEventArgs e)
         {

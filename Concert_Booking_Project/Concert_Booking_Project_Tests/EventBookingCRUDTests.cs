@@ -390,5 +390,65 @@ namespace Concert_Booking_Project_Tests
             var tAfter = bc.Tickets.Where(t => t.TicketId == _bookingCodeLayer.SelectedTicket.TicketId).FirstOrDefault();
             Assert.AreEqual(tAfter.First_Name == "Sample1234", true);
         }
+
+        [Test]
+        public void FilterEventsByContentTest()
+        {
+            using var bc = new BookingContext();
+            // Add Venue - Cannot have Event without Venue variable
+            var newVenue = new Venue() { Name = "Sample1234", City = "Cty", Email = "Eml", Phone = "Phn" };
+            bc.Venues.Add(newVenue);
+            bc.SaveChanges();
+
+            _bookingCodeLayer.SelectedVenue = newVenue;
+
+            // Add Events
+            var newEvent = new Event()
+            {
+                Venue = newVenue,
+                Event_Name = "Nme",
+                Main_Act = "Act",
+                Genre = "Gnr",
+                Description = "Desc",
+                Date = new DateTime(2020, 11, 05),
+                Start_Time = "16:00",
+                End_Time = "23:00",
+                Capacity = 50
+            };
+            var newEvent1 = new Event()
+            {
+                Venue = newVenue,
+                Event_Name = "Nme123456",
+                Main_Act = "Act",
+                Genre = "Gnr",
+                Description = "Desc",
+                Date = new DateTime(2020, 11, 05),
+                Start_Time = "16:00",
+                End_Time = "23:00",
+                Capacity = 50
+            };
+            bc.SaveChanges();
+
+            var test1 = _bookingCodeLayer.FilterEventsByName("N"); // Should return 1 object in List
+            var test2 = _bookingCodeLayer.FilterEventsByName("e"); // Should return 2 objects in List
+            var test3 = _bookingCodeLayer.FilterEventsByName("123123123123132"); // Should return 0 objects in List
+
+            // Test if the filtering works
+            Assert.AreEqual(test1.Count(), 1);
+            //Assert.AreEqual(test2.Capacity, 2);
+            //Assert.AreEqual(test3.Count(), 0);
+        }
+
+        [Test]
+        public void FilterEventsByDateTest()
+        {
+            using var bc = new BookingContext();
+        }
+
+        [Test]
+        public void FilterTicketsByContentTest()
+        {
+            using var bc = new BookingContext();
+        }
     }
 }
