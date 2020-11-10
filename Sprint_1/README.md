@@ -472,4 +472,4 @@ The last Sprint goal was unfortunately missed. However, this was a small additio
 
 The reason for this was because I had slightly underestimated how long the current goals would take to achieve. I spent longer than expected thoroughly testing the functionality and organising the documentation and my GitHub in a way that compliments my working style. The extra attention to these areas meant that I became more comfortable and knowledgeable and I believe this will help me greatly in future Sprints. This solid foundation will allow me to be more efficient with my time in the future.
 
-> *See 'Sprint 1 End - ProjectBoard Start.png'  in 'Otomkins/EventBookingApplication/Sprint_1'.*
+> *See 'Sprint 1 End - ProjectBoard.png'  in 'Otomkins/EventBookingApplication/Sprint_1'.*

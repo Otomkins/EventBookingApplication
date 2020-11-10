@@ -815,7 +815,7 @@ namespace Concert_Booking_WPF_App
                     TicketListBox.SelectedItem = null;
 
                     // Resume acces to other buttons after confirmation
-                    _ticketRemoveConfirm = false;
+                    _ticketUpdateConfirm = false;
 
                     UnrestrictAfterRemoveOrUpdateDecision();
                     EventUpdateButton.IsEnabled = true;

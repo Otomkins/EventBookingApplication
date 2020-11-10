@@ -214,6 +214,15 @@ namespace Concert_Booking_Project
             SelectedTicket.Email = email;
             SelectedTicket.Phone = phone;
             bc.SaveChanges();
+
+            //var q = bc.Events.Where(v => v.Venue.VenueId == SelectedVenue.VenueId).FirstOrDefault();
+            var q = bc.Tickets.Where(t => t.TicketId == SelectedTicket.TicketId).FirstOrDefault();
+
+            q.First_Name = firstName;
+            q.Last_Name = lastName;
+            q.Email = email;
+            q.Phone = phone;
+            bc.SaveChanges();
         }
         
         // Filter Functionality

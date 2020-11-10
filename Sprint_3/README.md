@@ -206,6 +206,18 @@ Continue with Sprint 2 goals that were pushed back. Add ticket information withi
 - [x] Test exceptions within app.
 - [x] Create filtering functionality and implement and test them within the app.
 
+> *See 'Sprint 3 End - Application.png' in 'Otomkins/EventBookingApplication/Sprint_3'.*
+
 ### Output Of Sprint Review
 
-### Sprint Retrospective
+At the end of Sprint 3, the final Sprint, all of my User Stories had their criteria met and were staged for review. They passed review and were placed in the 'Done' column of my project board. Whilst there was items in the project backlog, I had decided early on that I would not include these due to time constraints.
+
+### Sprint/Project Retrospective
+
+Overall, the Sprint was successful. This was mainly due to the emphasis on my previous planning and my change in priority, which allowed me to pace the rest of the project lifecycle effectively. Even though I did not implement everything that I initially had planned at the start of the project, I managed to create a working application that ticket off all of my criteria and functioned exactly how I wanted it to.
+
+The extra time I allowed myself at the end gave me chance to error check the smallest details in my application to make sure that it communicates exactly as planned in every instance and finish off the documentation appropriately. There was a couple issues that I flagged during this Sprint which I would have liked to have put work into but couldn't due to time constraints. These don't pose too much of a detriment to the application and are definitely smaller changes that can be made in future versions.
+
+The project as a whole went well, and after a bit of a slow start, I came into my own and had a comfortable routine where I could work on my project, with the planning on my project board, and update my documentation and GitHub frequently. When I encountered issues, I had a good foundation where I could document them and solve them so that they do not interfere with the project. Closer to the start, this was more of an issue and did take up more time then I expected. However, I can confidently say that I learnt a lot of useful skills and really solidified my knowledge of all the individual components that went into this project. In the future, I will be able to be more organised quickly, which would allow for more efficient project work.
+
+> *See 'Sprint 3 End - ProjectBoard.png'  in 'Otomkins/EventBookingApplication/Sprint_3'.*
