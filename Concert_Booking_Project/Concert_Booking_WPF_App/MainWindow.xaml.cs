@@ -30,6 +30,8 @@ namespace Concert_Booking_WPF_App
         bool _eventUpdateConfirm = false;
         bool _ticketUpdateConfirm = false;
 
+        bool _eventBulkRemoveConfirm = false;
+
         List<string> genres = new List<string>()
         {
             "",
@@ -137,8 +139,9 @@ namespace Concert_Booking_WPF_App
             EventEndTimeComboBoxB.ItemsSource = time;
         }
 
-        private void RestrictWhenRemoving()
+        private void RestrictWhenRemovingOrUpdating()
         {
+            // Venue Restrictions
             // Restric list boxes
             VenueListBox.IsEnabled = false;
             EventListBox.IsEnabled = false;
@@ -156,9 +159,49 @@ namespace Concert_Booking_WPF_App
             // Restrict Buttons
             VenueAddButton.IsEnabled = false;
             VenueClearButton.IsEnabled = false;
+
+            // Event Restrictions
+            EventNameTextBoxA.IsReadOnly = true;
+            EventGenreComboBoxA.IsEnabled = false;
+            EventMainActTextBoxA.IsReadOnly = true;
+            EventSupportingActTextBoxA.IsReadOnly = true;
+            EventDescriptionTextBoxA.IsReadOnly = true;
+            EventDateCalendarA.IsEnabled = false;
+            EventStartTimeComboBoxA.IsEnabled = false;
+            EventEndTimeComboBoxA.IsEnabled = false;
+            EventNameTextBoxB.IsReadOnly = true;
+            EventGenreComboBoxB.IsEnabled = false;
+            EventMainActTextBoxB.IsReadOnly = true;
+            EventSupportingActTextBoxB.IsReadOnly = true;
+            EventDescriptionTextBoxB.IsReadOnly = true;
+            EventDateCalendarB.IsEnabled = false;
+            EventStartTimeComboBoxB.IsEnabled = false;
+            EventEndTimeComboBoxB.IsEnabled = false;
+            EventAddButton.IsEnabled = false;
+            EventClearButton.IsEnabled = false;
+
+            //Filter Restrictions
+            EventFilterContentsTextBox.IsReadOnly = true;
+            EventContentsFilterButton.IsEnabled = false;
+            EventContentsResetButton.IsEnabled = false;
+            EventFilterDateTextboxA.IsReadOnly = true;
+            EventFilterDateTextboxB.IsReadOnly = true;
+            EventDateFilterButton.IsEnabled = false;
+            EventDataResetButton.IsEnabled = false;
+            TicketFilterContentsTextBox.IsReadOnly = true;
+            TicketDateFilterButton.IsEnabled = false;
+            TicketDataResetButton.IsEnabled = false;
+            EventRemoveDateTextbox.IsReadOnly = true;
+
+            // Ticket Restrictions
+            TicketFirstNameTextBox.IsReadOnly = true;
+            TicketLastNameTextBox.IsReadOnly = true;
+            TicketEmailTextBox.IsReadOnly = true;
+            TicketPhoneTextBox.IsReadOnly = true;
         }
-        private void UnrestrictAfterRemoveDecision()
+        private void UnrestrictAfterRemoveOrUpdateDecision()
         {
+            // Venue Unrestrict
             // Unestric list boxes
             VenueListBox.IsEnabled = true;
             EventListBox.IsEnabled = true;
@@ -176,6 +219,45 @@ namespace Concert_Booking_WPF_App
             // Unrestrict Buttons
             VenueAddButton.IsEnabled = true;
             VenueClearButton.IsEnabled = true;
+
+            // Event Unrestrict
+            EventNameTextBoxA.IsReadOnly = false;
+            EventGenreComboBoxA.IsEnabled = true;
+            EventMainActTextBoxA.IsReadOnly = false;
+            EventSupportingActTextBoxA.IsReadOnly = false;
+            EventDescriptionTextBoxA.IsReadOnly = false;
+            EventDateCalendarA.IsEnabled = true;
+            EventStartTimeComboBoxA.IsEnabled = true;
+            EventEndTimeComboBoxA.IsEnabled = true;
+            EventNameTextBoxB.IsReadOnly = false;
+            EventGenreComboBoxB.IsEnabled = true;
+            EventMainActTextBoxB.IsReadOnly = false;
+            EventSupportingActTextBoxB.IsReadOnly = false;
+            EventDescriptionTextBoxB.IsReadOnly = false;
+            EventDateCalendarB.IsEnabled = true;
+            EventStartTimeComboBoxB.IsEnabled = true;
+            EventEndTimeComboBoxB.IsEnabled = true;
+            EventAddButton.IsEnabled = true;
+            EventClearButton.IsEnabled = true;
+
+            //Filter Unrestrict
+            EventFilterContentsTextBox.IsReadOnly = false;
+            EventContentsFilterButton.IsEnabled = true;
+            EventContentsResetButton.IsEnabled = true;
+            EventFilterDateTextboxA.IsReadOnly = false;
+            EventFilterDateTextboxB.IsReadOnly = false;
+            EventDateFilterButton.IsEnabled = true;
+            EventDataResetButton.IsEnabled = true;
+            TicketFilterContentsTextBox.IsReadOnly = false;
+            TicketDateFilterButton.IsEnabled = true;
+            TicketDataResetButton.IsEnabled = true;
+            EventRemoveDateTextbox.IsReadOnly = false;
+
+            // Ticket Unrestrict
+            TicketFirstNameTextBox.IsReadOnly = false;
+            TicketLastNameTextBox.IsReadOnly = false;
+            TicketEmailTextBox.IsReadOnly = false;
+            TicketPhoneTextBox.IsReadOnly = false;
         }
 
         private void PopulateVenueFields()
@@ -201,6 +283,9 @@ namespace Concert_Booking_WPF_App
         {
             if (VenueListBox != null)
             {
+                TicketListBox.SelectedItem = null;
+                TicketListBox.ItemsSource = null;
+                _bookingCodeLayer.SelectedTicket = null;
                 _bookingCodeLayer.SetSelectedVenue(VenueListBox.SelectedItem);
 
                 if (_bookingCodeLayer.SelectedVenue != null)
@@ -238,10 +323,11 @@ namespace Concert_Booking_WPF_App
             if (EventListBox != null)
             {
                 _bookingCodeLayer.SetSelectedEvent(EventListBox.SelectedItem);
-                PopulateTicketFields();
 
                 if (_bookingCodeLayer.SelectedEvent != null)
                 {
+                    PopulateTicketFields();
+
                     // Retrieves selected Venue's data
                     EventNameTextBoxA.Text = _bookingCodeLayer.SelectedEvent.Event_Name;
                     EventGenreComboBoxA.SelectedItem = _bookingCodeLayer.SelectedEvent.Genre;
@@ -255,9 +341,14 @@ namespace Concert_Booking_WPF_App
                 // Clear error box when selecting
                 EventErrorTextboxA.Text = "";
                 EventErrorTextboxB.Text = "";
+                // Removes Ticket info when selecting
+                TicketFirstNameTextBox.Text = "";
+                TicketLastNameTextBox.Text = "";
+                TicketEmailTextBox.Text = "";
+                TicketPhoneTextBox.Text = "";
             }
             //else
-                //_bookingCodeLayer.SelectedEvent = null;
+            //_bookingCodeLayer.SelectedEvent = null;
         }
 
         private void TicketListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -285,9 +376,9 @@ namespace Concert_Booking_WPF_App
         // VENUE METHODS
         private void VenueUpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            if(VenueUpdateButton.Content == "Yes")
+            if (VenueUpdateButton.Content == "Yes")
             {
-                if(VenueErrorTextboxA.Text.Contains("Remove"))
+                if (VenueErrorTextboxA.Text.Contains("Remove"))
                 {
                     // Comfirmation Remove User Button functions
                     VenueUpdateButton.Content = "Update";
@@ -304,7 +395,13 @@ namespace Concert_Booking_WPF_App
                     // Resume acces to other buttons after confirmation
                     _venueRemoveConfirm = false;
 
-                    UnrestrictAfterRemoveDecision();
+                    UnrestrictAfterRemoveOrUpdateDecision();
+                    EventUpdateButton.IsEnabled = true;
+                    EventRemoveButton.IsEnabled = true;
+                    TicketUpdateButton.IsEnabled = true;
+                    TicketRemoveButton.IsEnabled = true;
+                    EventDateBulkRemoveButton.IsEnabled = true;
+                    EventDateBulkClearButton.IsEnabled = true;
                     PopulateVenueFields();
                     EventListBox.ItemsSource = null;
                 }
@@ -330,7 +427,13 @@ namespace Concert_Booking_WPF_App
                     _bookingCodeLayer.SelectedVenue = null;
                     VenueListBox.SelectedItem = null;
 
-                    UnrestrictAfterRemoveDecision();
+                    UnrestrictAfterRemoveOrUpdateDecision();
+                    EventUpdateButton.IsEnabled = true;
+                    EventRemoveButton.IsEnabled = true;
+                    TicketUpdateButton.IsEnabled = true;
+                    TicketRemoveButton.IsEnabled = true;
+                    EventDateBulkRemoveButton.IsEnabled = true;
+                    EventDateBulkClearButton.IsEnabled = true;
                     PopulateVenueFields();
                 }
             }
@@ -351,7 +454,13 @@ namespace Concert_Booking_WPF_App
                     VenueRemoveButton.Content = "No";
 
                     // Restrictions when confirming removal
-                    RestrictWhenRemoving();
+                    RestrictWhenRemovingOrUpdating();
+                    EventUpdateButton.IsEnabled = false;
+                    EventRemoveButton.IsEnabled = false;
+                    TicketUpdateButton.IsEnabled = false;
+                    TicketRemoveButton.IsEnabled = false;
+                    EventDateBulkRemoveButton.IsEnabled = false;
+                    EventDateBulkClearButton.IsEnabled = false;
                 }
             }
         }
@@ -367,7 +476,13 @@ namespace Concert_Booking_WPF_App
 
                 // Resume acces to other buttons after confirmation
                 _venueRemoveConfirm = false;
-                UnrestrictAfterRemoveDecision();
+                UnrestrictAfterRemoveOrUpdateDecision();
+                EventUpdateButton.IsEnabled = true;
+                EventRemoveButton.IsEnabled = true;
+                TicketUpdateButton.IsEnabled = true;
+                TicketRemoveButton.IsEnabled = true;
+                EventDateBulkRemoveButton.IsEnabled = true;
+                EventDateBulkClearButton.IsEnabled = true;
             }
             else
             {
@@ -387,7 +502,13 @@ namespace Concert_Booking_WPF_App
                     VenueRemoveButton.Content = "No";
 
                     // Restrictions when confirming removal
-                    RestrictWhenRemoving();
+                    RestrictWhenRemovingOrUpdating();
+                    EventUpdateButton.IsEnabled = false;
+                    EventRemoveButton.IsEnabled = false;
+                    TicketUpdateButton.IsEnabled = false;
+                    TicketRemoveButton.IsEnabled = false;
+                    EventDateBulkRemoveButton.IsEnabled = false;
+                    EventDateBulkClearButton.IsEnabled = false;
                 }
             }
         }
@@ -453,7 +574,13 @@ namespace Concert_Booking_WPF_App
                     // Resume acces to other buttons after confirmation
                     _eventRemoveConfirm = false;
 
-                    UnrestrictAfterRemoveDecision();
+                    UnrestrictAfterRemoveOrUpdateDecision();
+                    VenueUpdateButton.IsEnabled = true;
+                    VenueRemoveButton.IsEnabled = true;
+                    TicketUpdateButton.IsEnabled = true;
+                    TicketRemoveButton.IsEnabled = true;
+                    EventDateBulkRemoveButton.IsEnabled = true;
+                    EventDateBulkClearButton.IsEnabled = true;
                     PopulateEventFields();
                 }
 
@@ -487,7 +614,13 @@ namespace Concert_Booking_WPF_App
                     _bookingCodeLayer.SelectedEvent = null;
                     EventListBox.SelectedItem = null;
 
-                    UnrestrictAfterRemoveDecision();
+                    UnrestrictAfterRemoveOrUpdateDecision();
+                    VenueUpdateButton.IsEnabled = true;
+                    VenueRemoveButton.IsEnabled = true;
+                    TicketUpdateButton.IsEnabled = true;
+                    TicketRemoveButton.IsEnabled = true;
+                    EventDateBulkRemoveButton.IsEnabled = true;
+                    EventDateBulkClearButton.IsEnabled = true;
                     PopulateEventFields();
                 }
             }
@@ -508,7 +641,13 @@ namespace Concert_Booking_WPF_App
                     EventRemoveButton.Content = "No";
 
                     // Restrictions when confirming removal
-                    RestrictWhenRemoving();
+                    RestrictWhenRemovingOrUpdating();
+                    VenueUpdateButton.IsEnabled = false;
+                    VenueRemoveButton.IsEnabled = false;
+                    TicketUpdateButton.IsEnabled = false;
+                    TicketRemoveButton.IsEnabled = false;
+                    EventDateBulkRemoveButton.IsEnabled = false;
+                    EventDateBulkClearButton.IsEnabled = false;
                 }
             }
         }
@@ -524,7 +663,13 @@ namespace Concert_Booking_WPF_App
 
                 // Resume acces to other buttons after confirmation
                 _eventRemoveConfirm = false;
-                UnrestrictAfterRemoveDecision();
+                UnrestrictAfterRemoveOrUpdateDecision();
+                VenueUpdateButton.IsEnabled = true;
+                VenueRemoveButton.IsEnabled = true;
+                TicketUpdateButton.IsEnabled = true;
+                TicketRemoveButton.IsEnabled = true;
+                EventDateBulkRemoveButton.IsEnabled = true;
+                EventDateBulkClearButton.IsEnabled = true;
             }
             else
             {
@@ -544,38 +689,51 @@ namespace Concert_Booking_WPF_App
                     EventRemoveButton.Content = "No";
 
                     // Restrictions when confirming removal
-                    RestrictWhenRemoving();
+                    RestrictWhenRemovingOrUpdating();
+                    VenueUpdateButton.IsEnabled = false;
+                    VenueRemoveButton.IsEnabled = false;
+                    TicketUpdateButton.IsEnabled = false;
+                    TicketRemoveButton.IsEnabled = false;
+                    EventDateBulkRemoveButton.IsEnabled = false;
+                    EventDateBulkClearButton.IsEnabled = false;
                 }
             }
         }
 
         private void EventAddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EventNameTextBoxB.Text == "" || EventGenreComboBoxB.SelectedItem == null)
-                EventErrorTextboxB.Text = "The Event must have a name and a genre";
+            if (_bookingCodeLayer.SelectedVenue == null)
+                EventErrorTextboxB.Text = "Please select a Venue.";
             else
             {
-                var name = EventNameTextBoxB.Text;
-                var genre = EventGenreComboBoxB.SelectedItem.ToString();
-                var mainAct = EventMainActTextBoxB.Text;
-                var supportingAct = EventSupportingActTextBoxB.Text;
-                var description = EventDescriptionTextBoxB.Text;
-                var date = (DateTime)EventDateCalendarB.SelectedDate;
-                var startTime = EventStartTimeComboBoxB.SelectedItem.ToString();
-                var endTime = EventEndTimeComboBoxB.SelectedItem.ToString();
+                if (EventNameTextBoxB.Text == "" || EventGenreComboBoxB.SelectedItem == null)
+                    EventErrorTextboxB.Text = "Required fields are missing.";
+                else if (EventStartTimeComboBoxB.SelectedItem == null || EventEndTimeComboBoxB.SelectedItem == null)
+                    EventErrorTextboxB.Text = "Required fields are missing.";
+                else
+                {
+                    var name = EventNameTextBoxB.Text;
+                    var genre = EventGenreComboBoxB.SelectedItem.ToString();
+                    var mainAct = EventMainActTextBoxB.Text;
+                    var supportingAct = EventSupportingActTextBoxB.Text;
+                    var description = EventDescriptionTextBoxB.Text;
+                    var date = (DateTime)EventDateCalendarB.SelectedDate;
+                    var startTime = EventStartTimeComboBoxB.SelectedItem.ToString();
+                    var endTime = EventEndTimeComboBoxB.SelectedItem.ToString();
 
-                _bookingCodeLayer.AddEvent(name, mainAct, genre, description, date, startTime, endTime, 0, supportingAct);
-                PopulateEventFields();
+                    _bookingCodeLayer.AddEvent(name, mainAct, genre, description, date, startTime, endTime, 0, supportingAct);
+                    PopulateEventFields();
 
-                EventNameTextBoxB.Text = "";
-                EventGenreComboBoxB.SelectedItem = "";
-                EventMainActTextBoxB.Text = "";
-                EventSupportingActTextBoxB.Text = "";
-                EventDescriptionTextBoxB.Text = "";
-                EventDateCalendarB.SelectedDate = DateTime.Now;
-                EventStartTimeComboBoxB.SelectedItem = "";
-                EventEndTimeComboBoxB.SelectedItem = "";
-                EventErrorTextboxB.Text = "";
+                    EventNameTextBoxB.Text = "";
+                    EventGenreComboBoxB.SelectedItem = "";
+                    EventMainActTextBoxB.Text = "";
+                    EventSupportingActTextBoxB.Text = "";
+                    EventDescriptionTextBoxB.Text = "";
+                    EventDateCalendarB.SelectedDate = DateTime.Now;
+                    EventStartTimeComboBoxB.SelectedItem = "";
+                    EventEndTimeComboBoxB.SelectedItem = "";
+                    EventErrorTextboxB.Text = "";
+                }
             }
         }
 
@@ -612,7 +770,7 @@ namespace Concert_Booking_WPF_App
                     TicketUpdateButton.Content = "Update";
                     TicketRemoveButton.Content = "Remove";
 
-                    // Clears Event fileds when removed
+                    // Clears Ticket fileds when removed
                     TicketFirstNameTextBox.Text = "";
                     TicketLastNameTextBox.Text = "";
                     TicketEmailTextBox.Text = "";
@@ -625,7 +783,13 @@ namespace Concert_Booking_WPF_App
                     // Resume acces to other buttons after confirmation
                     _ticketRemoveConfirm = false;
 
-                    UnrestrictAfterRemoveDecision();
+                    UnrestrictAfterRemoveOrUpdateDecision();
+                    EventUpdateButton.IsEnabled = true;
+                    EventRemoveButton.IsEnabled = true;
+                    VenueUpdateButton.IsEnabled = true;
+                    VenueRemoveButton.IsEnabled = true;
+                    EventDateBulkRemoveButton.IsEnabled = true;
+                    EventDateBulkClearButton.IsEnabled = true;
                     PopulateTicketFields();
                 }
 
@@ -638,12 +802,10 @@ namespace Concert_Booking_WPF_App
 
                     _bookingCodeLayer.UpdateTicketData(firstName, lastName, email, phone);
 
-                    _bookingCodeLayer.SelectedTicket = null;
-
                     TicketUpdateButton.Content = "Update";
                     TicketRemoveButton.Content = "Remove";
 
-                    // Clears Event fileds when removed
+                    // Clears Ticket fileds when removed
                     TicketFirstNameTextBox.Text = "";
                     TicketLastNameTextBox.Text = "";
                     TicketEmailTextBox.Text = "";
@@ -652,8 +814,17 @@ namespace Concert_Booking_WPF_App
                     _bookingCodeLayer.SelectedTicket = null;
                     TicketListBox.SelectedItem = null;
 
-                    UnrestrictAfterRemoveDecision();
-                    PopulateEventFields();
+                    // Resume acces to other buttons after confirmation
+                    _ticketRemoveConfirm = false;
+
+                    UnrestrictAfterRemoveOrUpdateDecision();
+                    EventUpdateButton.IsEnabled = true;
+                    EventRemoveButton.IsEnabled = true;
+                    VenueUpdateButton.IsEnabled = true;
+                    VenueRemoveButton.IsEnabled = true;
+                    EventDateBulkRemoveButton.IsEnabled = true;
+                    EventDateBulkClearButton.IsEnabled = true;
+                    PopulateTicketFields();
                 }
             }
             else
@@ -673,7 +844,13 @@ namespace Concert_Booking_WPF_App
                     TicketRemoveButton.Content = "No";
 
                     // Restrictions when confirming removal
-                    RestrictWhenRemoving();
+                    RestrictWhenRemovingOrUpdating();
+                    EventUpdateButton.IsEnabled = false;
+                    EventRemoveButton.IsEnabled = false;
+                    VenueUpdateButton.IsEnabled = false;
+                    VenueRemoveButton.IsEnabled = false;
+                    EventDateBulkRemoveButton.IsEnabled = false;
+                    EventDateBulkClearButton.IsEnabled = false;
                 }
             }
         }
@@ -689,7 +866,13 @@ namespace Concert_Booking_WPF_App
 
                 // Resume acces to other buttons after confirmation
                 _ticketRemoveConfirm = false;
-                UnrestrictAfterRemoveDecision();
+                UnrestrictAfterRemoveOrUpdateDecision();
+                EventUpdateButton.IsEnabled = true;
+                EventRemoveButton.IsEnabled = true;
+                VenueUpdateButton.IsEnabled = true;
+                VenueRemoveButton.IsEnabled = true;
+                EventDateBulkRemoveButton.IsEnabled = true;
+                EventDateBulkClearButton.IsEnabled = true;
             }
             else
             {
@@ -709,7 +892,13 @@ namespace Concert_Booking_WPF_App
                     TicketRemoveButton.Content = "No";
 
                     // Restrictions when confirming removal
-                    RestrictWhenRemoving();
+                    RestrictWhenRemovingOrUpdating();
+                    EventUpdateButton.IsEnabled = false;
+                    EventRemoveButton.IsEnabled = false;
+                    VenueUpdateButton.IsEnabled = false;
+                    VenueRemoveButton.IsEnabled = false;
+                    EventDateBulkRemoveButton.IsEnabled = false;
+                    EventDateBulkClearButton.IsEnabled = false;
                 }
             }
         }
@@ -718,8 +907,8 @@ namespace Concert_Booking_WPF_App
         bool _filteringEventSByContents = false; // Specifies if filter is applied
         private void EventContentsFilterButton_Click(object sender, RoutedEventArgs e)
         {
-            if(EventFilterContentsTextBox.Text == "")
-                EventDateFilterErrorTextBox.Text = "Please specify filer criteria";
+            if (EventFilterContentsTextBox.Text == "")
+                EventDateFilterErrorTextBox.Text = "Please specify filter criteria";
             else
             {
                 EventListBox.ItemsSource = _bookingCodeLayer.FilterEventsByName(EventFilterContentsTextBox.Text.ToString());
@@ -745,7 +934,7 @@ namespace Concert_Booking_WPF_App
         private void EventDateFilterButton_Click(object sender, RoutedEventArgs e)
         {
             if (EventFilterDateTextboxA.Text == "" || EventFilterDateTextboxB.Text == "")
-                EventDateFilterErrorTextBox.Text = "Please specify filer criteria";
+                EventDateFilterErrorTextBox.Text = "Please specify filter criteria";
             else
             {
                 EventListBox.ItemsSource = _bookingCodeLayer.FilterEventsByDate(DateTime.Parse(EventFilterDateTextboxA.Text), DateTime.Parse(EventFilterDateTextboxB.Text));
@@ -773,7 +962,7 @@ namespace Concert_Booking_WPF_App
         private void TicketDateFilterButton_Click(object sender, RoutedEventArgs e)
         {
             if (TicketFilterContentsTextBox.Text == "")
-                TicketContentsFilterErrorTextBox.Text = "Please specify filer criteria";
+                TicketContentsFilterErrorTextBox.Text = "Please specify filter criteria";
             else
             {
                 TicketListBox.ItemsSource = _bookingCodeLayer.FilterTicketsById(int.Parse(TicketFilterContentsTextBox.Text));
@@ -798,20 +987,91 @@ namespace Concert_Booking_WPF_App
 
         private void EventDateBulkRemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (EventRemoveDateTextbox.Text == "")
-                EventDateBulkErrorTextBox.Text = "Please specify a date";
-            else
+            if (EventDateBulkRemoveButton.Content == "Yes")
             {
+                // Comfirmation Remove User Button functions
+                EventDateBulkRemoveButton.Content = "Remove";
+                EventDateBulkClearButton.Content = "Clear";
+
+                // Clears Event fileds when removed
+                TicketFirstNameTextBox.Text = "";
+                TicketLastNameTextBox.Text = "";
+                TicketEmailTextBox.Text = "";
+                TicketPhoneTextBox.Text = "";
                 _bookingCodeLayer.RemoveOutOfDateEventsAndTickets(DateTime.Parse(EventRemoveDateTextbox.Text));
                 PopulateEventFields();
+
+                _bookingCodeLayer.SelectedTicket = null;
+                TicketListBox.SelectedItem = null;
+
+                // Resume acces to other buttons after confirmation
+                _eventBulkRemoveConfirm = false;
+
+                UnrestrictAfterRemoveOrUpdateDecision();
+                EventUpdateButton.IsEnabled = true;
+                EventRemoveButton.IsEnabled = true;
+                VenueUpdateButton.IsEnabled = true;
+                VenueRemoveButton.IsEnabled = true;
+                TicketUpdateButton.IsEnabled = true;
+                TicketRemoveButton.IsEnabled = true;
+                PopulateTicketFields();
+            }
+            else
+            {
+                if (EventRemoveDateTextbox.Text == "")
+                    EventDateBulkErrorTextBox.Text = "Please specify a date";
+                else if(_bookingCodeLayer.SelectedVenue == null)
+                    EventDateBulkErrorTextBox.Text = "Please select a Venue";
+                else
+                {
+                    EventDateBulkErrorTextBox.Text = $"Remove all Events/Tickets up until {EventRemoveDateTextbox.Text}?";
+                    _eventBulkRemoveConfirm = true;
+                }
+
+                // Changes buttons and functions for update confirmation
+                if (_eventBulkRemoveConfirm == true)
+                {
+                    EventDateBulkRemoveButton.Content = "Yes";
+                    EventDateBulkClearButton.Content = "No";
+
+                    // Restrictions when confirming removal
+                    RestrictWhenRemovingOrUpdating();
+                    EventUpdateButton.IsEnabled = false;
+                    EventRemoveButton.IsEnabled = false;
+                    VenueUpdateButton.IsEnabled = false;
+                    VenueRemoveButton.IsEnabled = false;
+                    TicketUpdateButton.IsEnabled = false;
+                    TicketRemoveButton.IsEnabled = false;
+
+                }
             }
         }
 
         private void EventDateBulkClearButton_Click(object sender, RoutedEventArgs e)
         {
-            EventRemoveDateTextbox.Text = "";
-            EventDateBulkErrorTextBox.Text = "";
+            if (EventDateBulkClearButton.Content == "No")
+            {
+                // Second Button functions - Cancelling removal
+                EventDateBulkErrorTextBox.Text = "";
+                EventDateBulkRemoveButton.Content = "Remove";
+                EventDateBulkClearButton.Content = "Clear";
+
+                // Resume acces to other buttons after confirmation
+                _eventBulkRemoveConfirm = false;
+                UnrestrictAfterRemoveOrUpdateDecision();
+                EventUpdateButton.IsEnabled = true;
+                EventRemoveButton.IsEnabled = true;
+                VenueUpdateButton.IsEnabled = true;
+                VenueRemoveButton.IsEnabled = true;
+                TicketUpdateButton.IsEnabled = true;
+                TicketRemoveButton.IsEnabled = true;
+            }
+            else
+            {
+                EventRemoveDateTextbox.Text = "";
+                EventDateBulkErrorTextBox.Text = "";
+            }
+
         }
     }
-
 }

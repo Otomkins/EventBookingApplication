@@ -106,7 +106,7 @@
         <TextBox x:Name="EventErrorTextboxA" HorizontalAlignment="Left" Height="25" Margin="344,441,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Grid.Column="2" IsReadOnly="True" Background="#FF343434" Foreground="White" VerticalContentAlignment="Center"/>
 
         <!-- Add -->
-        <Label x:Name="EventInteractLabelB" Content="View/Update/Delete Event Data" HorizontalAlignment="Left" Height="30" Margin="14,488,0,0" VerticalAlignment="Top" Width="214" Grid.Column="2" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="EventInteractLabelB" Content="Add New Event Data" HorizontalAlignment="Left" Height="30" Margin="14,488,0,0" VerticalAlignment="Top" Width="214" Grid.Column="2" FontSize="14" FontWeight="Bold"/>
 
         <Label x:Name="EventNameLabelB" Content="Event Name" HorizontalAlignment="Left" Height="24" Margin="14,520,0,0" VerticalAlignment="Top" Width="150" Grid.Column="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
         <TextBox x:Name="EventNameTextBoxB" HorizontalAlignment="Left" Height="26" Margin="14,544,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.Column="2" VerticalContentAlignment="Center"/>

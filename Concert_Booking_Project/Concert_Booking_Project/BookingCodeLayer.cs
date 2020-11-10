@@ -40,7 +40,7 @@ namespace Concert_Booking_Project
         public List<Ticket> RetrieveAllTickets()
         {
             using var bc = new BookingContext();
-            var q = bc.Tickets.Where(e => e.Event.Venue.VenueId == SelectedVenue.VenueId);
+            var q = bc.Tickets.Where(t => t.Event.EventId == SelectedEvent.EventId);
             return q.ToList();
         }
         public void SetSelectedTicket(object selectedTicket)
@@ -82,7 +82,7 @@ namespace Concert_Booking_Project
             bc.SaveChanges();
         }
 
-        public void AddTicket(string firstName, string lastName, string email, string phone)
+        public void AddTicket(string firstName, string lastName, string email, string phone) // Only used to create data for demonstration
         {
             using var bc = new BookingContext();
             var q = bc.Events.Where(e => e.EventId == SelectedEvent.EventId);
@@ -95,12 +95,11 @@ namespace Concert_Booking_Project
                     Last_Name = lastName,
                     Email = email,
                     Phone = phone
-
                 };
                 bc.Tickets.Add(newTicket);
             }
             bc.SaveChanges();
-        } // Only used to create data for demonstration
+        }
 
         // Remove functionality
         public void RemoveVenue() // Removes related Event and Ticket data

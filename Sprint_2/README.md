@@ -125,7 +125,7 @@ As an organiser, I need to be able to see and manipulate the Event data with the
 - [x] User can now access the DB CRUD functions through the app for the Events data.
 - [x] Displayed data is changed with the use of the functions.
 
-*See 'Application Demonstration.mkv'  in 'Otomkins/EventBookingApplication/Sprint_2'.*
+> *See 'Application Demonstration.mkv'  and 'Sprint 2 End - Application.png' in 'Otomkins/EventBookingApplication/Sprint_2'.*
 
 ### Output Of Sprint Review
 
@@ -137,4 +137,4 @@ Overall, this was another successful Sprint. My priorities changed during, howev
 
 Taking what I learnt from the previous Sprint, I was able to adapt and appropriately organise my goals. At the start, I planned for Sprint 3 to be where I can add extra functionality to the project. Unfortunately, I will not be able to do so before the deadline of the project. Nonetheless, it gives me space to comfortably implement everything that I had planned for an event organiser to be able to use the app.
 
-*See 'Sprint 2 End - ProjectBoard Start.png'  in 'Otomkins/EventBookingApplication/Sprint_2'.*
+> *See 'Sprint 2 End - ProjectBoard Start.png'  in 'Otomkins/EventBookingApplication/Sprint_2'.*
