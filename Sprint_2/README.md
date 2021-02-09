@@ -24,7 +24,7 @@
 ## **Project Lifecycle**
 
 ### SPRINT 2
-
+![](https://github.com/Otomkins/EventBookingApplication/blob/main/Sprint_2/Sprint%202%20Start%20-%20Project%20Board.png)
 > *See 'Sprint 2 Start - ProjectBoard.png'  in 'Otomkins/EventBookingApplication/Sprint_2'.*
 
 <b>SPRINT GOAL:</b>
@@ -67,6 +67,7 @@ As an organiser, I need to be able to see and manipulate the Event data with the
 
 Initially, I planned to use the majority of this Sprint to add filtering functionality into my application. When I began implementing the CRUD functionality into the WPF application, it took more time then I was expecting and so I changed my Sprint priorities to reflect this. I moved some of the functionality into Sprint 3 so that I could make sure that the core application was working as planned. I then created new user stories that reflected these changes and added them.
 
+![](https://github.com/Otomkins/EventBookingApplication/blob/main/Sprint_2/Sprint%202%20Start%20-%20Updated%20Project%20Board.png)
 > *See 'Sprint 2 Start - UpdatedProjectBoard.png'  in 'Otomkins/EventBookingApplication/Sprint_2'.*
 
 ### WPF Application
@@ -125,6 +126,7 @@ As an organiser, I need to be able to see and manipulate the Event data with the
 - [x] User can now access the DB CRUD functions through the app for the Events data.
 - [x] Displayed data is changed with the use of the functions.
 
+![](https://github.com/Otomkins/EventBookingApplication/blob/main/Sprint_2/Sprint%202%20End%20-%20Application.png)
 > *See 'Application Demonstration.mkv'  and 'Sprint 2 End - Application.png' in 'Otomkins/EventBookingApplication/Sprint_2'.*
 
 ### Output Of Sprint Review
@@ -137,4 +139,5 @@ Overall, this was another successful Sprint. My priorities changed during, howev
 
 Taking what I learnt from the previous Sprint, I was able to adapt and appropriately organise my goals. At the start, I planned for Sprint 3 to be where I can add extra functionality to the project. Unfortunately, I will not be able to do so before the deadline of the project. Nonetheless, it gives me space to comfortably implement everything that I had planned for an event organiser to be able to use the app.
 
+![](https://github.com/Otomkins/EventBookingApplication/blob/main/Sprint_2/Sprint%202%20End%20-%20Project%20Board.png)
 > *See 'Sprint 2 End - ProjectBoard.png'  in 'Otomkins/EventBookingApplication/Sprint_2'.*
