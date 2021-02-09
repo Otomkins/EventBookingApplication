@@ -24,7 +24,7 @@
 ## **Project Lifecycle**
 
 ### SPRINT 1
-
+![](https://github.com/Otomkins/EventBookingApplication/blob/main/Sprint_1/Sprint%201%20Start%20-%20Project%20Board.png)
 > *See 'Sprint 1 Start - ProjectBoard.png'  in 'Otomkins/EventBookingApplication/Sprint_1'.*
 
 **SPRINT GOAL:**
@@ -75,7 +75,7 @@ As an organiser, I need to be able to update events so that they are correct.
 - [ ] Changes are reflected and displayed.
 
 ### Database Creation
-
+![](https://github.com/Otomkins/EventBookingApplication/blob/main/Event%20Booking%20Class%20Diagram.png)
 > *See 'Event Booking ERD.png' and 'Event Booking Class Diagram.png' in 'Otomkins/EventBookingApplication'.*
 
 After planning out my User Epics and Story's, I started setting up the foundation of the project. Using my *ERD Diagram*, I created my BloggingContext representing my desired relations and migrated the data into my database. 
@@ -458,6 +458,7 @@ Create basic WPF app with unit tests allowing a user to use CRUD functionality w
 
 The last goal included implementing the functionality within the application. This was nearing the end of Sprint 1 and so I had only implemented some of the features properly by the end of it.
 
+![](https://github.com/Otomkins/EventBookingApplication/blob/main/Sprint_1/Sprint%201%20End%20-%20Application.png)
 > *See 'Sprint 1 End - Application.png'  in 'Otomkins/EventBookingApplication/Sprint_1'.*
 
 ### Output Of Sprint Review
@@ -472,4 +473,5 @@ The last Sprint goal was unfortunately missed. However, this was a small additio
 
 The reason for this was because I had slightly underestimated how long the current goals would take to achieve. I spent longer than expected thoroughly testing the functionality and organising the documentation and my GitHub in a way that compliments my working style. The extra attention to these areas meant that I became more comfortable and knowledgeable and I believe this will help me greatly in future Sprints. This solid foundation will allow me to be more efficient with my time in the future.
 
+![](https://github.com/Otomkins/EventBookingApplication/blob/main/Sprint_1/Sprint%201%20End%20-%20Project%20Board.png)
 > *See 'Sprint 1 End - ProjectBoard.png'  in 'Otomkins/EventBookingApplication/Sprint_1'.*
