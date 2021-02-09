@@ -25,6 +25,7 @@
 
 ### SPRINT 3
 
+![](https://github.com/Otomkins/EventBookingApplication/blob/main/Sprint_3/Sprint%203%20Start%20-%20Project%20Board.png)
 > *See 'Sprint 3 Start - ProjectBoard.png'  in 'Otomkins/EventBookingApplication/Sprint_3'.*
 
 <b>SPRINT GOAL:</b>
@@ -70,8 +71,6 @@ As an organiser, I need filtering functionality for the events list so that I ca
 After the last Sprint, I had moved some of the project goals into this Sprint. I started by planning out what i will be able to achieve by the end. From this, I decided to leave my 3rd User Epic in the Project Backlog. This included creating Login functionality, but I would not have enough time. However, the rest of my goals were achievable and I adjusted them slightly for this Sprint. 
 
 The way I designed the app meant that it would show error messages linked to what the user was doing to avoid the application breaking. I decided to use this as my main method of testing for the filtering functionality. This should allow me more time to test my application and handle any errors that occur.
-
-> *See 'Sprint 3 Start - UpdatedProjectBoard.png'  in 'Otomkins/EventBookingApplication/Sprint_3'.*
 
 Soon into the Sprint, I noticed that my calendars on the GUI were not displaying data as I planned. I added this as an issue and placed it into my Sprint Backlog.
 
@@ -206,6 +205,7 @@ Continue with Sprint 2 goals that were pushed back. Add ticket information withi
 - [x] Test exceptions within app.
 - [x] Create filtering functionality and implement and test them within the app.
 
+![](https://github.com/Otomkins/EventBookingApplication/blob/main/Sprint_3/Sprint%203%20End%20-%20Application.png)
 > *See 'Sprint 3 End - Application.png' in 'Otomkins/EventBookingApplication/Sprint_3'.*
 
 ### Output Of Sprint Review
@@ -220,4 +220,5 @@ The extra time I allowed myself at the end gave me chance to error check the sma
 
 The project as a whole went well, and after a bit of a slow start, I came into my own and had a comfortable routine where I could work on my project, with the planning on my project board, and update my documentation and GitHub frequently. When I encountered issues, I had a good foundation where I could document them and solve them so that they do not interfere with the project. Closer to the start, this was more of an issue and did take up more time then I expected. However, I can confidently say that I learnt a lot of useful skills and really solidified my knowledge of all the individual components that went into this project. In the future, I will be able to be more organised quickly, which would allow for more efficient project work.
 
+![](https://github.com/Otomkins/EventBookingApplication/blob/main/Sprint_3/Sprint%203%20End%20-%20Project%20Board.png)
 > *See 'Sprint 3 End - ProjectBoard.png'  in 'Otomkins/EventBookingApplication/Sprint_3'.*
